@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background:#F4F4F4;
+}</string>
+   </property>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget{
+background:#0265CB
+}</string>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: #FFF;
+}</string>
+       </property>
+       <property name="text">
+        <string>  Cadastro de Turma</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>741</width>
+      <height>491</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame{
+background:#FFF;
+border-radius:15px;}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="turma_text_input">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#999A9A;
+ font-weight: 600;}</string>
+     </property>
+     <property name="text">
+      <string>Nome da turma *</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="turma_input">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>700</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+border-radius: 4px;
+border: 1px solid #ccc;
+padding-left:10px;
+font-size:14px
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Digite o nome completo</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="materia_text_input">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#999A9A;
+ font-weight: 600;}</string>
+     </property>
+     <property name="text">
+      <string>Matéria</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="materia_comboB">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>140</y>
+       <width>700</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border-radius: 4px;
+border: 1px solid #ccc;
+padding-left:10px;
+font-size:14px
+}</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Engenharia da Computação</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sistemas de Informação</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ciência da Computação</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Análise e Desenvolvimento de Sistemas</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="prof_text_input">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>190</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#999A9A;
+ font-weight: 600;}</string>
+     </property>
+     <property name="text">
+      <string>Professor</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="prof_input">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>230</y>
+       <width>700</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border-radius: 4px;
+border: 1px solid #ccc;
+padding-left:10px;
+font-size:14px
+}</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="inicio_text_imput">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>280</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#999A9A;
+ font-weight: 600;}</string>
+     </property>
+     <property name="text">
+      <string>Data de inicio</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="inicio_date_edit">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>320</y>
+       <width>210</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QDateEdit{
+border-radius: 4px;
+border: 1px solid #ccc;
+padding-left:10px;
+font-size:14px
+}</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="termino_text_input">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>280</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#999A9A;
+ font-weight: 600;}</string>
+     </property>
+     <property name="text">
+      <string>Data de termino</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="termino_date_edit">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>320</y>
+       <width>210</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QDateEdit{
+border-radius: 4px;
+border: 1px solid #ccc;
+padding-left:10px;
+font-size:14px
+}</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="valor_text_input">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>280</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+color:#999A9A;
+ font-weight: 600;}</string>
+     </property>
+     <property name="text">
+      <string>Valor total</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="valor_input">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>320</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+border-radius: 4px;
+border: 1px solid #ccc;
+padding-left:10px;
+font-size:14px
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Digite o valor do curso</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="voltar_button">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>410</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+color: #999A9A;
+border: 1px solid #CCC;
+border-radius:4px;
+text-align: center;
+}</string>
+     </property>
+     <property name="text">
+      <string>Voltar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="assets/cadastro/cadastro.qrc">
+       <normaloff>:/cadastro/icons8-esquerda-30.png</normaloff>:/cadastro/icons8-esquerda-30.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cadastrar_button">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>410</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background: #33CD33;
+color: #FFF;
+border-radius:4px;
+ text-align: center;
+}</string>
+     </property>
+     <property name="text">
+      <string>Cadastrar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="assets/principal/principal.qrc">
+       <normaloff>:/principal/icons8-soma-20.png</normaloff>:/principal/icons8-soma-20.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="assets/cadastro/cadastro.qrc"/>
+  <include location="assets/principal/principal.qrc"/>
+ </resources>
+ <connections/>
+</ui>
