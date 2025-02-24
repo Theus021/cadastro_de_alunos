@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_home(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1020, 601)
@@ -296,15 +296,16 @@ class Ui_MainWindow(object):
         self.adicionar_turma_button.setText(_translate("MainWindow", " Turma"))
         self.filtro_comboBox.setItemText(0, _translate("MainWindow", "Alunos"))
         self.filtro_comboBox.setItemText(1, _translate("MainWindow", "Professores"))
-import principal_rc
-import toolBar_rc
+
+import telas.toolBar
+import telas.principal
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_home()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_register(object):
+class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(810, 600)
@@ -31,11 +31,16 @@ class Ui_register(object):
         self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame.setObjectName("frame")
         self.login_text = QtWidgets.QTextEdit(self.frame)
-        self.login_text.setGeometry(QtCore.QRect(30, 30, 171, 51))
+        self.login_text.setGeometry(QtCore.QRect(30, 20, 171, 51))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        self.login_text.setFont(font)
+        self.login_text.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.login_text.setReadOnly(True)
         self.login_text.setObjectName("login_text")
         self.nome_text_input = QtWidgets.QTextEdit(self.frame)
         self.nome_text_input.setGeometry(QtCore.QRect(30, 80, 111, 31))
+        self.nome_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.nome_text_input.setReadOnly(True)
         self.nome_text_input.setObjectName("nome_text_input")
         self.nome_input = QtWidgets.QLineEdit(self.frame)
@@ -49,6 +54,7 @@ class Ui_register(object):
         self.nome_input.setObjectName("nome_input")
         self.email_text_input = QtWidgets.QTextEdit(self.frame)
         self.email_text_input.setGeometry(QtCore.QRect(30, 160, 91, 31))
+        self.email_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.email_text_input.setReadOnly(True)
         self.email_text_input.setObjectName("email_text_input")
         self.email_input = QtWidgets.QLineEdit(self.frame)
@@ -123,6 +129,7 @@ class Ui_register(object):
         self.email_icon_2.setObjectName("email_icon_2")
         self.email_text_input_2 = QtWidgets.QTextEdit(self.frame)
         self.email_text_input_2.setGeometry(QtCore.QRect(30, 240, 151, 31))
+        self.email_text_input_2.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.email_text_input_2.setReadOnly(True)
         self.email_text_input_2.setObjectName("email_text_input_2")
         self.email_div_input_2 = QtWidgets.QFrame(self.frame)
@@ -152,7 +159,9 @@ class Ui_register(object):
         self.senha_input.setObjectName("senha_input")
         self.senha_text_input = QtWidgets.QTextEdit(self.frame)
         self.senha_text_input.setGeometry(QtCore.QRect(30, 320, 111, 31))
+        self.senha_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.senha_text_input.setReadOnly(True)
+        self.senha_text_input.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.senha_text_input.setObjectName("senha_text_input")
         self.senha_div = QtWidgets.QFrame(self.frame)
         self.senha_div.setGeometry(QtCore.QRect(300, 360, 1, 20))
@@ -161,6 +170,19 @@ class Ui_register(object):
         self.senha_div.setFrameShape(QtWidgets.QFrame.VLine)
         self.senha_div.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.senha_div.setObjectName("senha_div")
+        self.close_button = QtWidgets.QPushButton(self.frame)
+        self.close_button.setGeometry(QtCore.QRect(310, 30, 51, 31))
+        self.close_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.close_button.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"}\n"
+"")
+        self.close_button.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/login/icons8-x-40.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.close_button.setIcon(icon)
+        self.close_button.setIconSize(QtCore.QSize(30, 30))
+        self.close_button.setObjectName("close_button")
         self.senha_text_input.raise_()
         self.senha_input.raise_()
         self.email_text_input_2.raise_()
@@ -179,18 +201,19 @@ class Ui_register(object):
         self.email_div_input_2.raise_()
         self.senha_icon.raise_()
         self.senha_div.raise_()
+        self.close_button.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Cadastre-se"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.login_text.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Segoe UI\'; font-size:20pt; font-weight:696; color:#284658;\">Regriste-se</span></p></body></html>"))
+"</style></head><body style=\" font-family:\'Segoe UI\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:20pt; font-weight:696; color:#284658;\">Cadastre-se</span></p></body></html>"))
         self.nome_text_input.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -216,14 +239,14 @@ class Ui_register(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Segoe UI\'; font-size:11pt; font-weight:696; color:#2d4a5c;\">Senha</span></p></body></html>"))
-import login
+import telas.login
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_register()
+    ui = Ui_Dialog()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())

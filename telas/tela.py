@@ -21,7 +21,7 @@ class Ui_Dialog_login(object):
         sizePolicy.setHeightForWidth(Dialog_login.sizePolicy().hasHeightForWidth())
         Dialog_login.setSizePolicy(sizePolicy)
         Dialog_login.setStyleSheet("QDialog{\n"
-"background: #0265CB;\n"
+"background: #FFF;\n"
 "}")
         self.frame = QtWidgets.QFrame(Dialog_login)
         self.frame.setGeometry(QtCore.QRect(220, 59, 370, 481))
@@ -44,7 +44,7 @@ class Ui_Dialog_login(object):
         self.fixed_text.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.fixed_text.setObjectName("fixed_text")
         self.login_text = QtWidgets.QTextEdit(self.frame)
-        self.login_text.setGeometry(QtCore.QRect(30, 30, 121, 51))
+        self.login_text.setGeometry(QtCore.QRect(30, 20, 121, 51))
         self.login_text.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.login_text.setReadOnly(True)
         self.login_text.setObjectName("login_text")
@@ -66,6 +66,7 @@ class Ui_Dialog_login(object):
         self.senha_text_input.setGeometry(QtCore.QRect(30, 220, 111, 31))
         self.senha_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.senha_text_input.setReadOnly(True)
+        self.senha_text_input.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.senha_text_input.setObjectName("senha_text_input")
         self.senha_input = QtWidgets.QLineEdit(self.frame)
         self.senha_input.setGeometry(QtCore.QRect(30, 250, 311, 41))
@@ -75,7 +76,8 @@ class Ui_Dialog_login(object):
 "padding-left:10px;\n"
 "font-size:14px;\n"
 "}")
-        self.senha_input.setEchoMode(QtWidgets.QLineEdit.Normal)
+        self.senha_input.setText("")
+        self.senha_input.setEchoMode(QtWidgets.QLineEdit.Password)
         self.senha_input.setObjectName("senha_input")
         self.esqueceu_senha_text = QtWidgets.QTextEdit(self.frame)
         self.esqueceu_senha_text.setGeometry(QtCore.QRect(30, 310, 171, 31))
@@ -152,13 +154,21 @@ class Ui_Dialog_login(object):
         self.email_div.raise_()
         self.senha_div.raise_()
         self.senha_icon.raise_()
+        self.background_blue = QtWidgets.QWidget(Dialog_login)
+        self.background_blue.setGeometry(QtCore.QRect(0, 0, 800, 600))
+        self.background_blue.setStyleSheet("QWidget{\n"
+"background:#0265CB; \n"
+"}")
+        self.background_blue.setObjectName("background_blue")
+        self.background_blue.raise_()
+        self.frame.raise_()
 
         self.retranslateUi(Dialog_login)
         QtCore.QMetaObject.connectSlotsByName(Dialog_login)
 
     def retranslateUi(self, Dialog_login):
         _translate = QtCore.QCoreApplication.translate
-        Dialog_login.setWindowTitle(_translate("Dialog_login", "Login"))
+        Dialog_login.setWindowTitle(_translate("Dialog_login", "Dialog"))
         self.fixed_text.setHtml(_translate("Dialog_login", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -188,7 +198,8 @@ class Ui_Dialog_login(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Segoe UI\'; font-size:11pt; text-decoration: underline; color:#939393;\">Esqueci minha senha</span></p></body></html>"))
         self.entrar_button.setText(_translate("Dialog_login", "ENTRAR"))
         self.cadastrar_button.setText(_translate("Dialog_login", "CADASTRAR"))
-import login
+
+import telas.login
 
 
 if __name__ == "__main__":

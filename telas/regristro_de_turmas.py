@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 class Ui_register_turmas(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
