@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="cadastro">
     <file>icons8-esquerda-30.png</file>
+    <file>icons8-x-40.png</file>
     <file>icone-de-perfil-de-usuario-em-estilo-plano-ilustracao-em-vetor-avatar-membro-em-fundo-isolado-conceito-de-negocio-de-sinal-de-permissao-humana_157943-15752.avif</file>
     <file>icons8-selecionado-20.png</file>
   </qresource>
