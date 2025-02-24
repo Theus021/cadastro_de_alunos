@@ -36,7 +36,7 @@ class MySQLDB:
             self.db.close()
             print("Conexão com o MySQL fechada.")
 
-# Exemplo de uso
-db = MySQLDB()
-db.criar_tabela()
-db.close()
+if __name__ == "__main__":
+    db = MySQLDB()
+    db.criar_tabela()
+    db.close()
