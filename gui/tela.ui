@@ -21,7 +21,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
-background: #0265CB;
+background: #FFF;
 }</string>
   </property>
   <widget class="QFrame" name="frame">
@@ -366,9 +366,24 @@ background:url(:/login/icons8-cadeado-100.png)
    <zorder>senha_div</zorder>
    <zorder>senha_icon</zorder>
   </widget>
+  <widget class="QWidget" name="background_blue" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+background:#FFF; 
+}</string>
+   </property>
+  </widget>
+  <zorder>background_blue</zorder>
+  <zorder>frame</zorder>
  </widget>
- <resources>
-  <include location="assets/login_ui/login.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
