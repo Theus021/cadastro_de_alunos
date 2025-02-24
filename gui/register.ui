@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
-background: #0265CB;
+background: #FFF;
 }
 </string>
   </property>
@@ -438,8 +438,8 @@ border:none;
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="../assets/cadastro/cadastro.qrc">
-      <normaloff>:/cadastro/icons8-x-40.png</normaloff>:/cadastro/icons8-x-40.png</iconset>
+     <iconset resource="../assets/login_ui/login.qrc">
+      <normaloff>:/login/icons8-x-40.png</normaloff>:/login/icons8-x-40.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -468,9 +468,26 @@ border:none;
    <zorder>senha_div</zorder>
    <zorder>close_button</zorder>
   </widget>
+  <widget class="QWidget" name="background_blue" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>810</width>
+     <height>610</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+background:#0265CB
+}</string>
+   </property>
+  </widget>
+  <zorder>background_blue</zorder>
+  <zorder>frame</zorder>
  </widget>
  <resources>
-  <include location="../assets/cadastro/cadastro.qrc"/>
+  <include location="../assets/login_ui/login.qrc"/>
  </resources>
  <connections/>
 </ui>

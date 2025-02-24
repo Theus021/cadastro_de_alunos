@@ -16,7 +16,7 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(810, 600)
         Dialog.setStyleSheet("QDialog{\n"
-"background: #0265CB;\n"
+"background: #FFF;\n"
 "}\n"
 "")
         self.frame = QtWidgets.QFrame(Dialog)
@@ -35,12 +35,10 @@ class Ui_Dialog(object):
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         self.login_text.setFont(font)
-        self.login_text.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.login_text.setReadOnly(True)
         self.login_text.setObjectName("login_text")
         self.nome_text_input = QtWidgets.QTextEdit(self.frame)
         self.nome_text_input.setGeometry(QtCore.QRect(30, 80, 111, 31))
-        self.nome_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.nome_text_input.setReadOnly(True)
         self.nome_text_input.setObjectName("nome_text_input")
         self.nome_input = QtWidgets.QLineEdit(self.frame)
@@ -54,7 +52,6 @@ class Ui_Dialog(object):
         self.nome_input.setObjectName("nome_input")
         self.email_text_input = QtWidgets.QTextEdit(self.frame)
         self.email_text_input.setGeometry(QtCore.QRect(30, 160, 91, 31))
-        self.email_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.email_text_input.setReadOnly(True)
         self.email_text_input.setObjectName("email_text_input")
         self.email_input = QtWidgets.QLineEdit(self.frame)
@@ -129,7 +126,6 @@ class Ui_Dialog(object):
         self.email_icon_2.setObjectName("email_icon_2")
         self.email_text_input_2 = QtWidgets.QTextEdit(self.frame)
         self.email_text_input_2.setGeometry(QtCore.QRect(30, 240, 151, 31))
-        self.email_text_input_2.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.email_text_input_2.setReadOnly(True)
         self.email_text_input_2.setObjectName("email_text_input_2")
         self.email_div_input_2 = QtWidgets.QFrame(self.frame)
@@ -155,11 +151,10 @@ class Ui_Dialog(object):
 "padding-left:10px;\n"
 "font-size:14px\n"
 "}")
-        self.senha_input.setEchoMode(QtWidgets.QLineEdit.Normal)
+        self.senha_input.setEchoMode(QtWidgets.QLineEdit.Password)
         self.senha_input.setObjectName("senha_input")
         self.senha_text_input = QtWidgets.QTextEdit(self.frame)
         self.senha_text_input.setGeometry(QtCore.QRect(30, 320, 111, 31))
-        self.senha_text_input.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.senha_text_input.setReadOnly(True)
         self.senha_text_input.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.senha_text_input.setObjectName("senha_text_input")
@@ -172,7 +167,6 @@ class Ui_Dialog(object):
         self.senha_div.setObjectName("senha_div")
         self.close_button = QtWidgets.QPushButton(self.frame)
         self.close_button.setGeometry(QtCore.QRect(310, 30, 51, 31))
-        self.close_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.close_button.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "}\n"
@@ -202,6 +196,14 @@ class Ui_Dialog(object):
         self.senha_icon.raise_()
         self.senha_div.raise_()
         self.close_button.raise_()
+        self.background_blue = QtWidgets.QWidget(Dialog)
+        self.background_blue.setGeometry(QtCore.QRect(0, 0, 810, 610))
+        self.background_blue.setStyleSheet("QWidget{\n"
+"background:#0265CB\n"
+"}")
+        self.background_blue.setObjectName("background_blue")
+        self.background_blue.raise_()
+        self.frame.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)

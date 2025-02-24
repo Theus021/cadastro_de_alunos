@@ -15,11 +15,11 @@ class cadastrar(QDialog):
         confirmEmail = self.ui.email_input_2.text()
         password = self.ui.senha_input.text()
         admin = False
-        # Aqui você pode adicionar a lógica para salvar os dados no banco de dados
+       
         if user == "" or email == "" or confirmEmail == "" or password == "":
-            print("Preencha todos os campos")
+           QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
         elif email != confirmEmail:
-            print("Os emails não coincidem")
+            QMessageBox.information(self, "Emails diferentes", "Os emails não coincidem")
         else:
             QMessageBox.information(self, "Cadastro realizado!", "Cadastro realizado com sucesso!")
             self.close()
