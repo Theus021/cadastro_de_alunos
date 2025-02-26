@@ -1,14 +1,12 @@
-from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtPrintSupport import *
+from PySide6.QtCore import QCoreApplication
+from PySide6.QtWidgets import (QApplication, QDialog, QMessageBox)
 import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from telas.tela import Ui_Dialog_login
-from modulos.pagina_inicial import telaPrincipal
-from modulos.register import open_cadastrar  # Importe a função open_cadastrar
+from telas.tela_login import Ui_Dialog_login
+from modulos.registerM import open_cadastrar
+from db.database import Data_base
 
 class login(QDialog):
     def __init__(self, *args, **argvs):
@@ -27,11 +25,10 @@ class login(QDialog):
 
         if admin == user and password == senha:
             QMessageBox.information(self, "Login realizado!", "Login realizado com sucesso!")
-            self.close()
-            self.window = telaPrincipal()
-            self.window.show()
+            
         else:
             QMessageBox.warning(self, "Erro", "Erro no login ou senha")
+
 
 app = QApplication(sys.argv)
 window = login()

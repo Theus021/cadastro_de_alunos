@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="login">
-    <file>icons8-x-40.png</file>
-    <file>icons8-cadeado-100.png</file>
-    <file>icons8-pessoa-do-sexo-masculino-100-1.png</file>
-    <file>icons8-mensagem-20.png</file>
-    <file>image-3.png</file>
-  </qresource>
-</RCC>
