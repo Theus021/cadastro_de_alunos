@@ -1,3 +1,4 @@
+from calendar import c
 from math import e
 import re
 from sqlite3 import Cursor
@@ -45,6 +46,11 @@ class Data_base:
             return ("ok")
         except mysql.connector.Error as e:
             print(f"Erro ao cadastrar usuário: {e}")
+    
+    def pega_dados(self, query, params):
+        cursor = self.connection.cursor()
+        cursor.execute(query, params)
+        return cursor.fetchone()
 
     def select_all_users(self):
         try:

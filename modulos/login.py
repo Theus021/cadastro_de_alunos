@@ -13,22 +13,28 @@ class login(QDialog):
         super(login, self).__init__(*args, **argvs)
         self.ui = Ui_Dialog_login()
         self.ui.setupUi(self)
-        self.ui.entrar_button.clicked.connect(self.login)  # Certifique-se de que o nome do botão está correto
-        self.ui.cadastrar_button.clicked.connect(open_cadastrar)  # Conecte o botão "Cadastrar" ao método
+        self.ui.entrar_button.clicked.connect(self.login)
+        self.ui.cadastrar_button.clicked.connect(open_cadastrar)
 
     def login(self):
-        admin = "admin"
-        senha = "admin"
-
         user = self.ui.email_input.text()  # Certifique-se de que o nome do campo de entrada está correto
         password = self.ui.senha_input.text()  # Certifique-se de que o nome do campo de entrada está correto
 
-        if admin == user and password == senha:
-            QMessageBox.information(self, "Login realizado!", "Login realizado com sucesso!")
-            
+        if user.strip() == "" or password.strip() == "":
+            QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
         else:
-            QMessageBox.warning(self, "Erro", "Erro no login ou senha")
+            db = Data_base()  # Criando a instância do banco de dados
+            db.connect()  # Conectando ao banco
+            dados = db.pega_dados("SELECT * FROM usuarios WHERE email = %s AND senha = %s", (user, password))
+            print(f"Dados retornados do banco: {dados}")
+            if dados:
+                QMessageBox.information(self, "Login", "Login realizado com sucesso!")
+            else:
+                QMessageBox.warning(self, "Erro", "Email ou senha inválidos")
+            db.close_connection()  # Fechando a conexão com o banco
 
+db = Data_base()  # Instanciando o banco de dados
+db.connect()  # Conectando ao banco de dados
 
 app = QApplication(sys.argv)
 window = login()

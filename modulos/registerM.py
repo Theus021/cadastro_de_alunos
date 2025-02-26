@@ -11,6 +11,7 @@ class Ui_dialog_login(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.cadastrar_button.clicked.connect(self.cadastrar_usuarios)
+        self.ui.close_button.clicked.connect(self.close)
 
     def cadastrar_usuarios(self):
             db = Data_base()

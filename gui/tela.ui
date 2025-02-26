@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>597</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -191,7 +191,7 @@ font-size:14px;
 }</string>
     </property>
     <property name="echoMode">
-     <enum>QLineEdit::Normal</enum>
+     <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
      <string>Digite sua senha</string>
@@ -369,7 +369,7 @@ background:url(:/login/icons8-cadeado-100.png)
   <widget class="QWidget" name="background_blue" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>0</y>
      <width>800</width>
      <height>600</height>
@@ -377,13 +377,15 @@ background:url(:/login/icons8-cadeado-100.png)
    </property>
    <property name="styleSheet">
     <string notr="true">QWidget{
-background:#FFF; 
+background:#0265CB; 
 }</string>
    </property>
   </widget>
   <zorder>background_blue</zorder>
   <zorder>frame</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../caadastro_de_alunos/assets/login_ui/login.qrc"/>
+ </resources>
  <connections/>
 </ui>

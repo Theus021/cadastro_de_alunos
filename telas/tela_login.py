@@ -18,14 +18,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QLabel,
     QLineEdit, QPushButton, QSizePolicy, QTextEdit,
     QWidget)
-import sys
 import telas.login_rc
 
 class Ui_Dialog_login(object):
     def setupUi(self, Dialog_login):
         if not Dialog_login.objectName():
             Dialog_login.setObjectName(u"Dialog_login")
-        Dialog_login.resize(800, 600)
+        Dialog_login.resize(800, 597)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -87,7 +86,7 @@ class Ui_Dialog_login(object):
 "padding-left:10px;\n"
 "font-size:14px;\n"
 "}")
-        self.senha_input.setEchoMode(QLineEdit.Normal)
+        self.senha_input.setEchoMode(QLineEdit.Password)
         self.esqueceu_senha_text = QTextEdit(self.frame)
         self.esqueceu_senha_text.setObjectName(u"esqueceu_senha_text")
         self.esqueceu_senha_text.setGeometry(QRect(30, 310, 171, 31))
@@ -163,9 +162,9 @@ class Ui_Dialog_login(object):
         self.senha_icon.raise_()
         self.background_blue = QWidget(Dialog_login)
         self.background_blue.setObjectName(u"background_blue")
-        self.background_blue.setGeometry(QRect(10, 0, 800, 600))
+        self.background_blue.setGeometry(QRect(0, 0, 800, 600))
         self.background_blue.setStyleSheet(u"QWidget{\n"
-"background:#FFF; \n"
+"background:#0265CB; \n"
 "}")
         self.background_blue.raise_()
         self.frame.raise_()
@@ -208,7 +207,5 @@ class Ui_Dialog_login(object):
         self.cadastrar_button.setText(QCoreApplication.translate("Dialog_login", u"CADASTRAR", None))
         self.email_person_icon.setText("")
         self.senha_icon.setText("")
-
-
     # retranslateUi
 

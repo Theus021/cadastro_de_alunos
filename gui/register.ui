@@ -61,6 +61,9 @@ box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
       <family>Segoe UI</family>
      </font>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="readOnly">
      <bool>true</bool>
     </property>
@@ -80,6 +83,9 @@ p, li { white-space: pre-wrap; }
       <width>111</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="readOnly">
      <bool>true</bool>
@@ -121,6 +127,9 @@ font-size:14px
       <width>91</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="readOnly">
      <bool>true</bool>
@@ -308,6 +317,9 @@ background:url(:/login/icons8-mensagem-20.png)
       <height>31</height>
      </rect>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="readOnly">
      <bool>true</bool>
     </property>
@@ -373,7 +385,7 @@ font-size:14px
 }</string>
     </property>
     <property name="echoMode">
-     <enum>QLineEdit::Normal</enum>
+     <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
      <string>Digite sua senha</string>
@@ -387,6 +399,9 @@ font-size:14px
       <width>111</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="readOnly">
      <bool>true</bool>
@@ -428,6 +443,9 @@ background: #ccc}</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
 border:none;
@@ -438,7 +456,7 @@ border:none;
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="../assets/login_ui/login.qrc">
+     <iconset resource="../../caadastro_de_alunos/assets/login_ui/login.qrc">
       <normaloff>:/login/icons8-x-40.png</normaloff>:/login/icons8-x-40.png</iconset>
     </property>
     <property name="iconSize">
@@ -487,7 +505,7 @@ background:#0265CB
   <zorder>frame</zorder>
  </widget>
  <resources>
-  <include location="../assets/login_ui/login.qrc"/>
+  <include location="../../caadastro_de_alunos/assets/login_ui/login.qrc"/>
  </resources>
  <connections/>
 </ui>

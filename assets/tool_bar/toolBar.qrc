@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="tool_bar">
+    <file>icons8-configuração-18 (1).png</file>
+    <file>icons8-pessoa-do-sexo-masculino-20.png</file>
+    <file>icons8-primeiro-plano-do-grupo-selecionado-20.png</file>
+    <file>icons8-professor-18.png</file>
+  </qresource>
+</RCC>
