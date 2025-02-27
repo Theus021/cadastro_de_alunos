@@ -70,7 +70,11 @@ class Ui_Dialog_login(object):
 "border-radius: 4px;\n"
 "border: 1px solid #ccc;\n"
 "padding-left:10px;\n"
-"font-size:14px;\n"
+"font-size:14px\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #c2dbfe\n"
 "}")
         self.senha_text_input = QTextEdit(self.frame)
         self.senha_text_input.setObjectName(u"senha_text_input")
@@ -84,14 +88,13 @@ class Ui_Dialog_login(object):
 "border-radius: 4px;\n"
 "border: 1px solid #ccc;\n"
 "padding-left:10px;\n"
-"font-size:14px;\n"
+"font-size:14px\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #c2dbfe\n"
 "}")
         self.senha_input.setEchoMode(QLineEdit.Password)
-        self.esqueceu_senha_text = QTextEdit(self.frame)
-        self.esqueceu_senha_text.setObjectName(u"esqueceu_senha_text")
-        self.esqueceu_senha_text.setGeometry(QRect(30, 310, 171, 31))
-        self.esqueceu_senha_text.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.PointingHandCursor))
-        self.esqueceu_senha_text.setReadOnly(True)
         self.entrar_button = QPushButton(self.frame)
         self.entrar_button.setObjectName(u"entrar_button")
         self.entrar_button.setGeometry(QRect(30, 360, 311, 41))
@@ -104,6 +107,14 @@ class Ui_Dialog_login(object):
 "    font-weight: bold;\n"
 "    cursor: pointer;\n"
 "    margin: 0;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background: #2682E1;\n"
+"}\n"
+"\n"
+"QPushButton:clicked{\n"
+"border: 3px solid #CCC\n"
 "}")
         self.cadastrar_button = QPushButton(self.frame)
         self.cadastrar_button.setObjectName(u"cadastrar_button")
@@ -118,6 +129,13 @@ class Ui_Dialog_login(object):
 "    font-weight: bold;\n"
 "    cursor: pointer;\n"
 "    margin: 0;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background: #FF3591; }\n"
+"\n"
+"QPushButton:clicked{\n"
+"border: 3px solid #CCC\n"
 "}")
         self.email_person_icon = QLabel(self.frame)
         self.email_person_icon.setObjectName(u"email_person_icon")
@@ -147,12 +165,29 @@ class Ui_Dialog_login(object):
 "background:url(:/login/icons8-cadeado-100.png)\n"
 "}\n"
 "")
+        self.pushButton = QPushButton(self.frame)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setGeometry(QRect(24, 300, 151, 31))
+        font = QFont()
+        font.setPointSize(11)
+        font.setUnderline(True)
+        self.pushButton.setFont(font)
+        self.pushButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.pushButton.setStyleSheet(u"QPushButton{\n"
+"background:#fff;\n"
+"color: #989999;\n"
+"border:none;\n"
+"padding-left: 0px\n"
+"}\n"
+"\n"
+"QPushButton:clicked{\n"
+"color:#757575\n"
+"}")
         self.email_text_input.raise_()
         self.fixed_text.raise_()
         self.login_text.raise_()
         self.senha_text_input.raise_()
         self.senha_input.raise_()
-        self.esqueceu_senha_text.raise_()
         self.entrar_button.raise_()
         self.cadastrar_button.raise_()
         self.email_input.raise_()
@@ -160,6 +195,7 @@ class Ui_Dialog_login(object):
         self.email_div.raise_()
         self.senha_div.raise_()
         self.senha_icon.raise_()
+        self.pushButton.raise_()
         self.background_blue = QWidget(Dialog_login)
         self.background_blue.setObjectName(u"background_blue")
         self.background_blue.setGeometry(QRect(0, 0, 800, 600))
@@ -198,14 +234,10 @@ class Ui_Dialog_login(object):
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:696; color:#2d4a5c;\">Senha</span></p></body></html>", None))
         self.senha_input.setPlaceholderText(QCoreApplication.translate("Dialog_login", u"Digite sua senha", None))
-        self.esqueceu_senha_text.setHtml(QCoreApplication.translate("Dialog_login", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; text-decoration: underline; color:#939393;\">Esqueci minha senha</span></p></body></html>", None))
         self.entrar_button.setText(QCoreApplication.translate("Dialog_login", u"ENTRAR", None))
         self.cadastrar_button.setText(QCoreApplication.translate("Dialog_login", u"CADASTRAR", None))
         self.email_person_icon.setText("")
         self.senha_icon.setText("")
+        self.pushButton.setText(QCoreApplication.translate("Dialog_login", u"Esqueci minha senha", None))
     # retranslateUi
 

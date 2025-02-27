@@ -61,6 +61,10 @@ class Ui_Dialog(object):
 "border: 1px solid #ccc;\n"
 "padding-left:10px;\n"
 "font-size:14px\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #c2dbfe\n"
 "}")
         self.email_text_input = QTextEdit(self.frame)
         self.email_text_input.setObjectName(u"email_text_input")
@@ -75,6 +79,10 @@ class Ui_Dialog(object):
 "border: 1px solid #ccc;\n"
 "padding-left:10px;\n"
 "font-size:14px\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #c2dbfe\n"
 "}")
         self.cadastrar_button = QPushButton(self.frame)
         self.cadastrar_button.setObjectName(u"cadastrar_button")
@@ -89,6 +97,13 @@ class Ui_Dialog(object):
 "    font-weight: bold;\n"
 "    cursor: pointer;\n"
 "    margin: 0;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background: #FF3591; }\n"
+"\n"
+"QPushButton:clicked{\n"
+"border: 3px solid #CCC\n"
 "}")
         self.nome_person_icon = QLabel(self.frame)
         self.nome_person_icon.setObjectName(u"nome_person_icon")
@@ -126,6 +141,10 @@ class Ui_Dialog(object):
 "border: 1px solid #ccc;\n"
 "padding-left:10px;\n"
 "font-size:14px\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #c2dbfe\n"
 "}")
         self.email_icon_2 = QLabel(self.frame)
         self.email_icon_2.setObjectName(u"email_icon_2")
@@ -161,6 +180,10 @@ class Ui_Dialog(object):
 "border: 1px solid #ccc;\n"
 "padding-left:10px;\n"
 "font-size:14px\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #c2dbfe\n"
 "}")
         self.senha_input.setEchoMode(QLineEdit.Password)
         self.senha_text_input = QTextEdit(self.frame)
