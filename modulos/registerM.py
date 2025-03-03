@@ -1,8 +1,12 @@
 import sys
+import os
+import re
 from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import (QApplication, QDialog, QMessageBox)
-from telas.tela_register import Ui_Dialog
 
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from telas.tela_register import Ui_Dialog
 from db.database import Data_base
 
 class Ui_dialog_login(QDialog):
@@ -14,38 +18,47 @@ class Ui_dialog_login(QDialog):
         self.ui.close_button.clicked.connect(self.close)
 
     def cadastrar_usuarios(self):
-            db = Data_base()
-            db.connect()
+        user = self.ui.nome_input.text().strip()
+        email = self.ui.email_input.text().strip()
+        confirmEmail = self.ui.email_input_2.text().strip()
+        password = self.ui.senha_input.text().strip()
+        admin = False
 
-            user = self.ui.nome_input.text()
-            email = self.ui.email_input.text()
-            confirmEmail = self.ui.email_input_2.text()
-            password = self.ui.senha_input.text()
-            admin = False
+        padrao_email = r"^[a-zA-Z0-9_.+-]+@(aluno\.faculdadeimpacta\.com\.br|colaborador\.faculdadeimpacta\.com\.br)$"
         
-            if user == "" or email == "" or confirmEmail == "" or password == "":
-                QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
-            elif email != confirmEmail:
-                QMessageBox.information(self, "Emails diferentes", "Os emails não coincidem")
-            else:
-                fullDataSet = (user, email, password, admin)
-                db = Data_base()
-                db.connect()
-                db.create_table_new_user()
-                db.register_new_user(fullDataSet)
-                QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
-                self.ui.nome_input.clear()
-                self.ui.email_input.clear()
-                self.ui.email_input_2.clear()
-                self.ui.senha_input.clear()
-                self.close()
+        if not user or not email or not confirmEmail or not password:
+            QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
+            return  # Sai da função para evitar continuar a execução
+
+        if email != confirmEmail:
+            QMessageBox.information(self, "Emails diferentes", "Os emails não coincidem")
+            return
+
+        if not re.match(padrao_email, email):  # Corrigido: usar 'email' e não 'emailAluno'
+            QMessageBox.warning(self, "Erro", "Digite seu e-mail de aluno ou colaborador")
+            return
+
+        fullDataSet = (user, email, password, admin)
+        db = Data_base()
+        db.connect()
+        db.create_table_new_user()
+
+        dados = db.register_new_user(fullDataSet)
+
+        if dados:
+            QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
+            self.ui.nome_input.clear()
+            self.ui.email_input.clear()
+            self.ui.email_input_2.clear()
+            self.ui.senha_input.clear()
+            self.close()
+        else:
+            QMessageBox.information(self, "Erro", "Aconteceu um erro inesperado")
+
+        db.close_connection()    
+
 
 def open_cadastrar():
-    db = Data_base()
-    db.connect()
-    db.create_table_new_user()
-    db.close_connection()
-    
     cadastro_window = Ui_dialog_login()
     cadastro_window.exec_()
 

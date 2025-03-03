@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="principal">
+    <file>icons8-seta-para-expandir-15.png</file>
     <file>icons8-soma-20.png</file>
     <file>icons8-pesquisar-20 (1).png</file>
   </qresource>

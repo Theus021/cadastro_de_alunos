@@ -36,6 +36,38 @@ class Data_base:
         )""")
         self.connection.commit() 
 
+    def create_table_new_student(self):
+        cursor = self.connection.cursor()
+        cursor.execute ("""CREATE TABLE IF NOT EXISTS alunos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        cpf VARCHAR(14) NOT NULL UNIQUE,
+        rg VARCHAR(12) NOT NULL,
+        estado_civil ENUM('solteiro', 'casado', 'viuvo') NOT NULL,
+        endereco TEXT NOT NULL,
+        sexo ENUM('masculino', 'feminino') NOT NULL,
+        nascimento DATE NOT NULL,
+        telefone1 VARCHAR(15) NOT NULL,
+        telefone2 VARCHAR(15)
+        )""")
+
+        print("Tabela criada com sucesso ou tabela já existente")
+        self.connection.commit()     
+
+    def register_new_student(self, fullDataSet):
+
+        try:
+            cursor = self.connection.cursor()
+            sql = """INSERT INTO alunos (nome, email, cpf, rg, estado_civil, endereco, sexo, nascimento, telefone1, telefone2)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+            cursor.execute(sql, fullDataSet)
+            self.connection.commit()
+            return ("ok")
+
+        except mysql.connector.Error as e:
+            print(f"Erro ao cadastrar usuário: {e}")
+
     def register_new_user(self, fullDataSet):
         """ Registra um novo usuário no banco de dados. """
         try:
@@ -44,6 +76,7 @@ class Data_base:
             cursor.execute(sql, fullDataSet)
             self.connection.commit()
             return ("ok")
+            
         except mysql.connector.Error as e:
             print(f"Erro ao cadastrar usuário: {e}")
     
@@ -86,4 +119,5 @@ class Data_base:
 db = Data_base()
 db.connect()
 db.create_table_new_user()
+db.create_table_new_student()
 db.close_connection()
