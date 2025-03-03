@@ -38,6 +38,12 @@ class Ui_dialog_login(QDialog):
             QMessageBox.warning(self, "Erro", "Digite seu e-mail de aluno ou colaborador")
             return
 
+        padrao_senha = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+
+        if not re.match(padrao_senha, password):
+            QMessageBox.warning(self, "Erro", "A senha deve ter pelo menos 8 caracteres, incluindo letras e números!")
+            return    
+
         fullDataSet = (user, email, password, admin)
         db = Data_base()
         db.connect()
