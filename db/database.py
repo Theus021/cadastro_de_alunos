@@ -85,6 +85,20 @@ class Data_base:
         cursor.execute(query, params)
         return cursor.fetchone()
 
+    def alter_password(self, nova_senha, email):
+        cursor = None
+        try:
+            cursor = self.connection.cursor()
+            querry = ("UPDATE usuarios SET senha = %s WHERE email = %s")
+            cursor.execute(querry, (nova_senha, email))
+            self.connection.commit()
+            return True 
+        except mysql.connector.Error as e:
+            return False  
+        finally:
+            if cursor:
+                cursor.close()    
+
     def select_all_users(self):
         try:
             cursor = self.connection.cursor()

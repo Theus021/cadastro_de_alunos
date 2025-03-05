@@ -1,6 +1,6 @@
 import sys
 import os
-import re
+import re #regex
 from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import (QApplication, QDialog, QMessageBox)
 
@@ -24,7 +24,7 @@ class Ui_dialog_login(QDialog):
         password = self.ui.senha_input.text().strip()
         admin = False
 
-        padrao_email = r"^[a-zA-Z0-9_.+-]+@(aluno\.faculdadeimpacta\.com\.br|colaborador\.faculdadeimpacta\.com\.br)$"
+        padrao_email = r"^[a-zA-Z0-9_.+-]+@(colaborador\.faculdadeimpacta\.com\.br)$"
         
         if not user or not email or not confirmEmail or not password:
             QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
@@ -35,14 +35,12 @@ class Ui_dialog_login(QDialog):
             return
 
         if not re.match(padrao_email, email):  # Corrigido: usar 'email' e não 'emailAluno'
-            QMessageBox.warning(self, "Erro", "Digite seu e-mail de aluno ou colaborador")
+            QMessageBox.warning(self, "Erro", "Digite seu e-mail de colaborador")
             return
 
-        padrao_senha = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-
-        if not re.match(padrao_senha, password):
-            QMessageBox.warning(self, "Erro", "A senha deve ter pelo menos 8 caracteres, incluindo letras e números!")
-            return    
+        if len(password) < 8:
+            QMessageBox.warning(self, "Erro", "A senha deve ter pelo menos 8 caracteres!")
+            return
 
         fullDataSet = (user, email, password, admin)
         db = Data_base()
@@ -67,6 +65,7 @@ class Ui_dialog_login(QDialog):
 def open_cadastrar():
     cadastro_window = Ui_dialog_login()
     cadastro_window.exec_()
+
 
    
 
