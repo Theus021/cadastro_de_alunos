@@ -30,9 +30,9 @@ class Data_base:
         cursor.execute("""CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY, 
         nome VARCHAR(50) NOT NULL, 
-        email VARCHAR(50) NOT NULL, 
+        email VARCHAR(50) NOT NULL UNIQUE, 
         senha VARCHAR(50) NOT NULL, 
-        admin BOOLEAN
+        admin BOOLEAN NOT NULL DEFAULT FALSE
         )""")
         self.connection.commit() 
 
@@ -72,11 +72,18 @@ class Data_base:
         """ Registra um novo usuário no banco de dados. """
         try:
             cursor = self.connection.cursor()
+
+            verifica_sql = "SELECT 1 FROM usuarios WHERE email = %s"
+            cursor.execute(verifica_sql, (fullDataSet[1],)) 
+
+            if cursor.fetchone():
+                return False 
+
             sql = "INSERT INTO usuarios (nome, email, senha, admin) VALUES (%s, %s, %s, %s)"
             cursor.execute(sql, fullDataSet)
             self.connection.commit()
-            return ("ok")
-            
+           
+            return True
         except mysql.connector.Error as e:
             print(f"Erro ao cadastrar usuário: {e}")
     
@@ -84,6 +91,26 @@ class Data_base:
         cursor = self.connection.cursor()
         cursor.execute(query, params)
         return cursor.fetchone()
+
+    def confereEmail(self, email_digitado):
+        cursor = None
+        try:
+            cursor = self.connection.cursor()
+            querry = ("SELECT email FROM usuarios WHERE email = %s")
+            cursor.execute(querry, (email_digitado,))
+
+            resultado = cursor.fetchone()
+            return resultado is not None
+
+        except mysql.connector.Error as e:
+            print(f"Erro no banco: {e}")
+            return "Erro ao verificar o e-mail no banco"
+            
+        finally:
+            if cursor:
+                cursor.close()
+            
+              
 
     def alter_password(self, nova_senha, email):
         cursor = None
@@ -97,7 +124,7 @@ class Data_base:
             return False  
         finally:
             if cursor:
-                cursor.close()    
+             cursor.close()    
 
     def select_all_users(self):
         try:

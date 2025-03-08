@@ -21,6 +21,7 @@ class Login(QDialog):  # Nome da classe começa com maiúscula por convenção
         self.ui.entrar_button.clicked.connect(self.login)
         self.ui.cadastrar_button.clicked.connect(open_cadastrar)
         self.ui.pushButton.clicked.connect(request_password)
+
         
     def login(self):
         user = self.ui.email_input.text().strip()
@@ -32,7 +33,7 @@ class Login(QDialog):  # Nome da classe começa com maiúscula por convenção
 
         db = Data_base()
         db.connect()
-        email_check = db.pega_dados("SELECT * FROM usuarios WHERE email = %s", (user,))
+        email_check = db.confereEmail(user)
 
         if not email_check:
             QMessageBox.information(self, "Erro", "E-mail ou senha inválida")

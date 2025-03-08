@@ -16,5 +16,5 @@ class telaPrincipal(QMainWindow):
         super(telaPrincipal, self).__init__(*args, **argvs)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.adicionar_aluno_button.clicked.connect(open_cadastrar_aluno)
+        self.ui.adicionar_button.clicked.connect(open_cadastrar_aluno)
 

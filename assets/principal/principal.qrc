@@ -1,7 +1,16 @@
 <RCC>
   <qresource prefix="principal">
-    <file>icons8-seta-para-expandir-15.png</file>
-    <file>icons8-soma-20.png</file>
-    <file>icons8-pesquisar-20 (1).png</file>
+    <file>menu.png</file>
+    <file>menu_small.png</file>
+    <file>icon_user.png</file>
+    <file>icon_home.png</file>
+    <file>icon_logo.png</file>
+    <file>icon_pesquisa.png</file>
+    <file>icon_door.png</file>
+    <file>icon_logo.png</file>
+    <file>icon_setting.png</file>
+    <file>icon_test.png</file>
+    <file>icon_seta_drop.png</file>
+    <file>icon_soma.png</file>
   </qresource>
 </RCC>

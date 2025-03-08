@@ -3,6 +3,7 @@ import os
 import re #regex
 from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import (QApplication, QDialog, QMessageBox)
+from db.database import Data_base
 
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -22,9 +23,18 @@ class Ui_dialog_login(QDialog):
         email = self.ui.email_input.text().strip()
         confirmEmail = self.ui.email_input_2.text().strip()
         password = self.ui.senha_input.text().strip()
-        admin = False
+        admin = 0
 
-        padrao_email = r"^[a-zA-Z0-9_.+-]+@(colaborador\.faculdadeimpacta\.com\.br)$"
+        padrao_email = r"^[a-zA-Z0-9_.+-]+@(colaborador\.impacta\.com\.br)$"
+
+
+        db = Data_base()
+        db.connect()
+        verificaEmail = db.confereEmail(email)
+
+        if verificaEmail:
+            QMessageBox.information(self, "Error", "Email Já cadastrado !")
+   
         
         if not user or not email or not confirmEmail or not password:
             QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
@@ -34,7 +44,7 @@ class Ui_dialog_login(QDialog):
             QMessageBox.information(self, "Emails diferentes", "Os emails não coincidem")
             return
 
-        if not re.match(padrao_email, email):  # Corrigido: usar 'email' e não 'emailAluno'
+        if not re.match(padrao_email, email): 
             QMessageBox.warning(self, "Erro", "Digite seu e-mail de colaborador")
             return
 
@@ -50,14 +60,14 @@ class Ui_dialog_login(QDialog):
         dados = db.register_new_user(fullDataSet)
 
         if dados:
-            QMessageBox.information(self, "Cadastro", "Usuário cadastrado com sucesso!")
+            QMessageBox.information(self, "Sucesso", "Usuário cadastrado com sucesso !")
             self.ui.nome_input.clear()
             self.ui.email_input.clear()
             self.ui.email_input_2.clear()
             self.ui.senha_input.clear()
             self.close()
         else:
-            QMessageBox.information(self, "Erro", "Aconteceu um erro inesperado")
+            QMessageBox.warning(self, "Erro", "Email já cadastrado !")
 
         db.close_connection()    
 

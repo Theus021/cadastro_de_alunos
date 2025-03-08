@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1020</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget{
+background:#0265CB
+}</string>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>50</number>
+       </property>
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="text_header">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background:#0265CB;
+border:none;
+padding: 0px 0xp 0px 5px;
+font-size: 16px;
+color: #FFF;
+}</string>
+         </property>
+         <property name="text">
+          <string> Tech School</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="config_button_bar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background:#0265CB;
+border:none;
+padding: 0px 0xp 0px 5px;
+font-size: 16px;
+color: #FFF;
+}
+
+QPushButton:hover{
+color: #EBE9E9
+}</string>
+         </property>
+         <property name="text">
+          <string> Configuração</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../assets/tool_bar/toolBar.qrc">
+           <normaloff>:/principal/setting (1).png</normaloff>:/principal/setting (1).png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="widget_3" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>981</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <widget class="QLabel" name="search_icon">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>160</y>
+       <width>30</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+image: url(:/principal/icon_pesquisa.png);
+background:none;
+border:none;
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="filtro_por_QcomboBox">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>160</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border: 1px solid #ced4da;
+border-radius: 3px;
+padding-left:15px;
+background: #fff;
+transition: border 0.2s ease-in-out;
+color: #727474;
+}
+
+QComboBox::drop-down{
+border: 0px
+}
+
+QComboBox::down-arrow{
+image: url(:/principal/icon_seta_drop.png);
+width: 12px;
+height:12px;
+margin-right: 15px;
+}
+
+QComboBox:on{
+border: 2px solid #c2dbfe;
+}
+
+QComboBox QListView {
+font-size: 12px;
+background-color: #fff;
+outline: 0px;
+}
+
+QComboBox QListView::item {
+padding-left: 10px;
+background-color: #fff;
+}
+
+QComboBox QListView::item:hover {
+ background-color: #1e90ff;
+ }
+
+QComboBox QListView::item:selected {
+background-color: #1e90ff;
+ }</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Filtrar Por</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Alunos</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Turmas</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Professores</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLineEdit" name="search_input">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>160</y>
+       <width>401</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+font-size:16px;
+background: #F7F8FC;
+padding-left: 45px;
+border-radius: 3px;
+transition: border 0.2s ease-in-out;
+}
+
+QLineEdit:focus{
+border: 2px solid #c2dbfe
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Digite um nome a ser pesquisado</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>981</width>
+       <height>511</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame{
+background: #FFF;
+border-radius: 10px;}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="div_grey">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>120</y>
+        <width>900</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background: #CCC;
+border-radius 5px}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="alunos_div_tg">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>120</y>
+        <width>90</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background: #CCC;
+border-radius 5px}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="prof_div_tg">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>120</y>
+        <width>110</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background: #CCC;
+border-radius 5px}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="professores_tg">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>90</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: none;
+color: #B1B2B3
+}</string>
+      </property>
+      <property name="text">
+       <string>Professores</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="alunos_tg">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>90</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: none;
+color: #B1B2B3
+}</string>
+      </property>
+      <property name="text">
+       <string>Alunos</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="turmas_tg">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>90</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: none;
+color: #B1B2B3;
+}</string>
+      </property>
+      <property name="text">
+       <string>Turmas</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="todos_div_tg">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>120</y>
+        <width>90</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background: #0265CB;
+border-radius 5px}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="todos_Tg">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>90</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: none;
+color: #0265CB
+}</string>
+      </property>
+      <property name="text">
+       <string>Todos</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="turmas_div_tg">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>120</y>
+        <width>110</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background: #CCC;
+border-radius 5px}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="list_text_header">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+color: #081452}</string>
+      </property>
+      <property name="text">
+       <string>Lista De Registros</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>180</y>
+        <width>901</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableWidget{
+border-radius: 3px;
+
+alternate-background-color: #F7F8FC;
+background-color: white;
+}
+
+QHeaderView::section{
+border: none;
+background: #FFF;
+border-bottom: 2px solid #808BBF;
+color: #99A2CC;
+padding: 10px;
+text-align: center;
+}
+
+QTableWidget::item{
+border-bottom: 1px solid #CCC;
+color: #000;
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: #f0f0f0;
+    width: 5px;  
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar:handle:vertical {
+    background: #888;
+    min-height: 10px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #555;
+}
+
+QScrollBar::handle:vertical:pressed {
+    background: #333;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+</string>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideLeft</enum>
+      </property>
+      <property name="showGrid">
+       <bool>false</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::NoPen</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="cornerButtonEnabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>120</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>42</number>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>true</bool>
+      </attribute>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nome completo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Cpf</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Periodo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Turma</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>ações</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="adicionar_button">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>40</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background: #32CD32;
+color: #FFF;
+border-radius:3px;
+}
+
+QPushButton:hover{
+background: #39DD39;
+}
+
+QPushButton:clicked{
+border: 3px solid #CCC}</string>
+     </property>
+     <property name="text">
+      <string> Add novo registro</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../assets/principal/principal.qrc">
+       <normaloff>:/principal/icon_soma.png</normaloff>:/principal/icon_soma.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="ordenar_por_QcomboBox">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>160</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+border: 1px solid #ced4da;
+border-radius: 3px;
+padding-left:15px;
+background: #fff;
+transition: border 0.2s ease-in-out;
+color: #727474;
+}
+
+QComboBox::drop-down{
+border: 0px
+}
+
+QComboBox::down-arrow{
+image: url(:/principal/icon_seta_drop.png);
+width: 12px;
+height:12px;
+margin-right: 15px;
+}
+
+QComboBox:on{
+border: 2px solid #c2dbfe;
+}
+
+QComboBox QListView {
+font-size: 12px;
+background-color: #fff;
+outline: 0px;
+}
+
+QComboBox QListView::item {
+padding-left: 10px;
+background-color: #fff;
+}
+
+QComboBox QListView::item:hover {
+ background-color: #1e90ff;
+ }
+
+QComboBox QListView::item:selected {
+background-color: #1e90ff;
+ }</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Ordenar Por </string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Nome</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CPF</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Turma</string>
+      </property>
+     </item>
+    </widget>
+    <zorder>frame</zorder>
+    <zorder>filtro_por_QcomboBox</zorder>
+    <zorder>search_input</zorder>
+    <zorder>search_icon</zorder>
+    <zorder>adicionar_button</zorder>
+    <zorder>ordenar_por_QcomboBox</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../assets/principal/principal.qrc"/>
+  <include location="../assets/tool_bar/toolBar.qrc"/>
+ </resources>
+ <connections/>
+</ui>

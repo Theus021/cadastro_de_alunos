@@ -19,8 +19,6 @@ class RequestPassword(QDialog):
         self.ui.senha_confirm_input.setEnabled(False)
         self.ui.email_input.textChanged.connect(self.verifyUser)
 
-        
-
     def verifyUser(self):
         email = self.ui.email_input.text().strip()
 
@@ -31,7 +29,7 @@ class RequestPassword(QDialog):
 
         db = Data_base()  
         db.connect()
-        stored_email = db.pega_dados("SELECT email FROM usuarios WHERE email = %s", (email,))
+        stored_email = db.confereEmail(email)
 
         if stored_email:
             self.ui.senha_input.setEnabled(True)
@@ -50,13 +48,16 @@ class RequestPassword(QDialog):
             QMessageBox.warning(self, "Erro", "Preencha todos os campos de senha!")
             return
 
+        if len(senha) < 8:
+             QMessageBox.warning(self, "Erro", "A senha deve ter pelo menos 8 caracteres!")
+
         if senha == confirm_senha:
             db = Data_base()
             db.connect()
             sucesso = db.alter_password(senha, email)
 
             if sucesso:
-                QMessageBox.information(self, "Sucesso", f"Senha do usuário {email} foi atualizada com sucesso!")
+                QMessageBox.information(self, "Sucesso", "Senha atualizada com sucesso!")
                 self.close()
         else:    
             QMessageBox.warning(self, "Erro", "As senhas não coincidem!")

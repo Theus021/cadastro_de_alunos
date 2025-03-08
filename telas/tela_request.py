@@ -50,12 +50,12 @@ class Ui_Dialog(object):
         self.login_text.setReadOnly(True)
         self.email_text_input = QTextEdit(self.frame)
         self.email_text_input.setObjectName(u"email_text_input")
-        self.email_text_input.setGeometry(QRect(30, 160, 91, 31))
+        self.email_text_input.setGeometry(QRect(30, 140, 91, 31))
         self.email_text_input.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.ArrowCursor))
         self.email_text_input.setReadOnly(True)
         self.email_input = QLineEdit(self.frame)
         self.email_input.setObjectName(u"email_input")
-        self.email_input.setGeometry(QRect(30, 190, 311, 41))
+        self.email_input.setGeometry(QRect(30, 170, 311, 41))
         self.email_input.setStyleSheet(u"QLineEdit{\n"
 "border-radius: 4px;\n"
 "border: 1px solid #ccc;\n"
@@ -89,21 +89,21 @@ class Ui_Dialog(object):
 "}")
         self.email_div_input = QFrame(self.frame)
         self.email_div_input.setObjectName(u"email_div_input")
-        self.email_div_input.setGeometry(QRect(300, 200, 2, 20))
+        self.email_div_input.setGeometry(QRect(300, 180, 2, 20))
         self.email_div_input.setStyleSheet(u"Line{\n"
 "background: #ccc}")
         self.email_div_input.setFrameShape(QFrame.Shape.VLine)
         self.email_div_input.setFrameShadow(QFrame.Shadow.Sunken)
         self.email_icon = QLabel(self.frame)
         self.email_icon.setObjectName(u"email_icon")
-        self.email_icon.setGeometry(QRect(310, 200, 20, 20))
+        self.email_icon.setGeometry(QRect(310, 180, 20, 20))
         self.email_icon.setStyleSheet(u"QLabel{\n"
 "background:url(:/login/icons8-mensagem-20.png)\n"
 "}\n"
 "")
         self.senha_input = QLineEdit(self.frame)
         self.senha_input.setObjectName(u"senha_input")
-        self.senha_input.setGeometry(QRect(30, 270, 311, 41))
+        self.senha_input.setGeometry(QRect(30, 250, 311, 41))
         self.senha_input.setStyleSheet(u"QLineEdit{\n"
 "border-radius: 4px;\n"
 "border: 1px solid #ccc;\n"
@@ -117,33 +117,33 @@ class Ui_Dialog(object):
         self.senha_input.setEchoMode(QLineEdit.Password)
         self.email_icon_2 = QLabel(self.frame)
         self.email_icon_2.setObjectName(u"email_icon_2")
-        self.email_icon_2.setGeometry(QRect(310, 280, 20, 20))
+        self.email_icon_2.setGeometry(QRect(310, 260, 20, 20))
         self.email_icon_2.setStyleSheet(u"QLabel{\n"
 "background:url(:/login/icons8-cadeado-100.png);\n"
 "}\n"
 "")
         self.email_text_input_2 = QTextEdit(self.frame)
         self.email_text_input_2.setObjectName(u"email_text_input_2")
-        self.email_text_input_2.setGeometry(QRect(30, 240, 151, 31))
+        self.email_text_input_2.setGeometry(QRect(30, 220, 151, 31))
         self.email_text_input_2.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.ArrowCursor))
         self.email_text_input_2.setReadOnly(True)
         self.email_div_input_2 = QFrame(self.frame)
         self.email_div_input_2.setObjectName(u"email_div_input_2")
-        self.email_div_input_2.setGeometry(QRect(300, 280, 2, 20))
+        self.email_div_input_2.setGeometry(QRect(300, 260, 2, 20))
         self.email_div_input_2.setStyleSheet(u"Line{\n"
 "background: #ccc}")
         self.email_div_input_2.setFrameShape(QFrame.Shape.VLine)
         self.email_div_input_2.setFrameShadow(QFrame.Shadow.Sunken)
         self.senha_icon = QLabel(self.frame)
         self.senha_icon.setObjectName(u"senha_icon")
-        self.senha_icon.setGeometry(QRect(310, 360, 20, 20))
+        self.senha_icon.setGeometry(QRect(310, 340, 20, 20))
         self.senha_icon.setStyleSheet(u"QLabel{\n"
 "background:url(:/login/icons8-cadeado-100.png);\n"
 "}\n"
 "")
         self.senha_confirm_input = QLineEdit(self.frame)
         self.senha_confirm_input.setObjectName(u"senha_confirm_input")
-        self.senha_confirm_input.setGeometry(QRect(30, 350, 311, 41))
+        self.senha_confirm_input.setGeometry(QRect(30, 330, 311, 41))
         self.senha_confirm_input.setStyleSheet(u"QLineEdit{\n"
 "border-radius: 4px;\n"
 "border: 1px solid #ccc;\n"
@@ -157,13 +157,13 @@ class Ui_Dialog(object):
         self.senha_confirm_input.setEchoMode(QLineEdit.Password)
         self.senha_text_input = QTextEdit(self.frame)
         self.senha_text_input.setObjectName(u"senha_text_input")
-        self.senha_text_input.setGeometry(QRect(30, 320, 151, 31))
+        self.senha_text_input.setGeometry(QRect(30, 300, 151, 31))
         self.senha_text_input.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.ArrowCursor))
         self.senha_text_input.setReadOnly(True)
         self.senha_text_input.setTextInteractionFlags(Qt.NoTextInteraction)
         self.senha_div = QFrame(self.frame)
         self.senha_div.setObjectName(u"senha_div")
-        self.senha_div.setGeometry(QRect(300, 360, 2, 20))
+        self.senha_div.setGeometry(QRect(300, 340, 2, 20))
         self.senha_div.setStyleSheet(u"Line{\n"
 "background: #ccc}")
         self.senha_div.setFrameShape(QFrame.Shape.VLine)
@@ -182,7 +182,7 @@ class Ui_Dialog(object):
         self.close_button.setIconSize(QSize(30, 30))
         self.fixed_text = QTextEdit(self.frame)
         self.fixed_text.setObjectName(u"fixed_text")
-        self.fixed_text.setGeometry(QRect(30, 80, 281, 51))
+        self.fixed_text.setGeometry(QRect(30, 70, 281, 51))
         self.fixed_text.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.ArrowCursor))
         self.fixed_text.setStyleSheet(u"QTextEdit{\n"
 "background:#FFF\n"
@@ -253,6 +253,6 @@ class Ui_Dialog(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#666666;\">Digite o email para libera\u00e7\u00e3o dos campos de senha</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#666666;\">Digite um email v\u00e1lido para libera\u00e7\u00e3o dos campos de senha</span></p></body></html>", None))
     # retranslateUi
 
