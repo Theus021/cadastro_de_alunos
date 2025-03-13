@@ -187,21 +187,45 @@ class Data_base:
         except mysql.connector.Error as e:
             print(f"Erro ao buscar dados: {e}")
             return "Erro ao buscar dados no banco"
+ 
+    def buscar_aluno_por_id(self, aluno_id):
+        self.connect()
+        cursor = self.connection.cursor()
+        
+        cursor.execute("SELECT nome, email, cpf, rg, nascimento, estado_civil, endereco, sexo, telefone, periodo, turma FROM alunos WHERE id = %s", (aluno_id,))
+        aluno = cursor.fetchone()  # Retorna apenas um registro
+        
+        self.close_connection()
+        return aluno
 
-    def delete_user(self, id):
+    def atualizar_aluno(self, fullDataSet):
+        cursor = self.connection.cursor()
+
         try:
-            cursor = self.connection.cursor()
-            cursor.execute("DELETE FROM usuarios WHERE id = %s", (id,))
+            query = """UPDATE alunos SET 
+                        nome = %s, email = %s, cpf=%s, rg = %s, estado_civil = %s, endereco = %s, 
+                        sexo = %s, nascimento = %s, telefone = %s, periodo = %s, turma = %s, isAtivo =%s """
+            cursor.execute(query, fullDataSet)
+            self.connection.commit()
+            return True
+        except Exception as e:
+            print(f"Erro ao atualizar aluno: {e}")
+            return False
+
+    def deletar_entidade(self, id):
+        cursor = self.connection.cursor()
+        
+        try:
+            cursor.execute("DELETE FROM alunos WHERE id = %s", (id,))
 
             self.connection.commit()
 
-            return "Cadastro de usuarios exlcuido com sucesso!"
+            return "Registro exlcuido com sucesso!"
 
         except mysql.connector.Error as e:
-            print(f"Erro ao excluir usuário: {e}")    
+            print(f"Erro ao excluir registro: {e}")     
 
     def close_connection(self):
-        """Fecha a conexão com o banco de dados."""
         try:
             if self.connection:
                 self.connection.close()

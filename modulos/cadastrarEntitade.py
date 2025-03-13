@@ -3,7 +3,6 @@ from PySide6.QtPrintSupport import *
 import sys
 import os
 import re
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from db.database import Data_base
@@ -16,7 +15,8 @@ class Student_form(QDialog):
         self.ui.setupUi(self)
         self.ui.cadastrar_button.clicked.connect(self.cadastrar_entidade)
         self.ui.voltar_button.clicked.connect(self.close)
-        
+
+       
     def cadastrar_entidade(self):
         nome = self.ui.nome_input.text()
         email = self.ui.email_imput.text()
