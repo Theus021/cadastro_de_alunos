@@ -233,22 +233,27 @@ background-color: #1e90ff;
      </property>
      <item>
       <property name="text">
-       <string>Filtrar Por</string>
+       <string>Filtrar por</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Alunos</string>
+       <string>Ads</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Turmas</string>
+       <string>Data-science</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Professores</string>
+       <string>Machine-learning</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Software-engineer</string>
       </property>
      </item>
     </widget>
@@ -340,7 +345,7 @@ border-radius 5px}</string>
      <widget class="QLabel" name="prof_div_tg">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>280</x>
         <y>120</y>
         <width>110</width>
         <height>2</height>
@@ -358,7 +363,7 @@ border-radius 5px}</string>
      <widget class="QPushButton" name="professores_tg">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>280</x>
         <y>90</y>
         <width>111</width>
         <height>23</height>
@@ -419,35 +424,6 @@ color: #B1B2B3
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="turmas_tg">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>90</y>
-        <width>111</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
-border: none;
-color: #B1B2B3;
-}</string>
-      </property>
-      <property name="text">
-       <string>Turmas</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="todos_div_tg">
       <property name="geometry">
        <rect>
@@ -495,24 +471,6 @@ color: #0265CB
        <string>Todos</string>
       </property>
      </widget>
-     <widget class="QLabel" name="turmas_div_tg">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>120</y>
-        <width>110</width>
-        <height>2</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-background: #CCC;
-border-radius 5px}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="list_text_header">
       <property name="geometry">
        <rect>
@@ -534,7 +492,7 @@ border-radius 5px}</string>
 color: #081452}</string>
       </property>
       <property name="text">
-       <string>Lista De Registros</string>
+       <string>Lista De :</string>
       </property>
      </widget>
      <widget class="QTableWidget" name="tableWidget_2">
@@ -684,16 +642,6 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <string>New Row</string>
        </property>
       </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
       <column>
        <property name="text">
         <string>Id</string>
@@ -729,6 +677,58 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <string>ações</string>
        </property>
       </column>
+      <item row="0" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="inativos_div_tg">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>120</y>
+        <width>110</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background: #CCC;
+border-radius 5px}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="inativos_tg">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>90</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: none;
+color: #B1B2B3
+}</string>
+      </property>
+      <property name="text">
+       <string>Inativos</string>
+      </property>
      </widget>
     </widget>
     <widget class="QPushButton" name="adicionar_button">

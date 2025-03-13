@@ -44,23 +44,64 @@ class Data_base:
         email VARCHAR(100) NOT NULL UNIQUE,
         cpf VARCHAR(14) NOT NULL UNIQUE,
         rg VARCHAR(12) NOT NULL,
-        estado_civil ENUM('solteiro', 'casado', 'viuvo') NOT NULL,
+        estado_civil ENUM('Solteiro', 'Casado', 'Viuvo') NOT NULL,
         endereco TEXT NOT NULL,
-        sexo ENUM('masculino', 'feminino') NOT NULL,
+        sexo ENUM('Masculino', 'Feminino') NOT NULL,
         nascimento DATE NOT NULL,
-        telefone1 VARCHAR(15) NOT NULL,
-        telefone2 VARCHAR(15)
+        telefone VARCHAR(15) NOT NULL,
+        periodo ENUM('Diurno','Noturno') NOT NULL,
+        turma ENUM('Ads', 'Data-science', 'Machine-learning', 'Software-engineer') NOT NULL,
+        isAtivo TINYINT(1) DEFAULT 1
         )""")
 
-        print("Tabela criada com sucesso ou tabela já existente")
-        self.connection.commit()     
+        print("Tabela criada com sucesso ou tabela já existente")   
+        self.connection.commit() 
 
     def register_new_student(self, fullDataSet):
 
         try:
             cursor = self.connection.cursor()
-            sql = """INSERT INTO alunos (nome, email, cpf, rg, estado_civil, endereco, sexo, nascimento, telefone1, telefone2)
-               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+            sql = """INSERT INTO alunos (nome, email, cpf, rg, estado_civil, endereco, sexo, nascimento, telefone, periodo, turma, isAtivo)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+            cursor.execute(sql, fullDataSet)
+            self.connection.commit()
+            return ("ok")
+
+        except mysql.connector.IntegrityError as e:
+            if e.errno == 1062:  
+                print("Erro: E-mail ou CPF já cadastrado!")
+                return "duplicate_entry"
+            else:
+                print(f"Erro ao cadastrar usuário: {e}")
+                return False
+
+    def create_table_new_teacher(self):
+        cursor = self.connection.cursor()
+        cursor.execute ("""CREATE TABLE IF NOT EXISTS professores (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        cpf VARCHAR(14) NOT NULL UNIQUE,
+        rg VARCHAR(12) NOT NULL,
+        estado_civil ENUM('Solteiro', 'Casado', 'Viuvo') NOT NULL,
+        endereco TEXT NOT NULL,
+        sexo ENUM('Masculino', 'Feminino') NOT NULL,
+        nascimento DATE NOT NULL,
+        telefone VARCHAR(15) NOT NULL,
+        periodo ENUM('Diurno','Noturno') NOT NULL,
+        turma ENUM('Ads', 'Data-science', 'Machine-learning', 'Software-engineer') NOT NULL,
+        isAtivo TINYINT(1) DEFAULT 1
+        )""")
+
+        print("Tabela criada com sucesso ou tabela já existente")
+        self.connection.commit()     
+
+    def register_new_teacher(self, fullDataSet):
+
+        try:
+            cursor = self.connection.cursor()
+            sql = """INSERT INTO professores (nome, email, cpf, rg, estado_civil, endereco, sexo, nascimento, telefone, periodo, turma, isAtivo)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
             cursor.execute(sql, fullDataSet)
             self.connection.commit()
             return ("ok")
@@ -87,9 +128,11 @@ class Data_base:
         except mysql.connector.Error as e:
             print(f"Erro ao cadastrar usuário: {e}")
     
-    def pega_dados(self, query, params):
+    def pega_dados(self, email, senha ):
         cursor = self.connection.cursor()
-        cursor.execute(query, params)
+        querry = ("SELECT * FROM usuarios where email=%s AND senha = %s")
+        cursor.execute(querry, (email, senha))
+
         return cursor.fetchone()
 
     def confereEmail(self, email_digitado):
@@ -110,8 +153,6 @@ class Data_base:
             if cursor:
                 cursor.close()
             
-              
-
     def alter_password(self, nova_senha, email):
         cursor = None
         try:
@@ -128,12 +169,24 @@ class Data_base:
 
     def select_all_users(self):
         try:
-            cursor = self.connection.cursor()
-            cursor.execute("SELECT * FROM usuarios")
-            usuarios = cursor.fetchall()
-            return usuarios
+            db.connect()
+            cursor = db.connection.cursor()
+
+            query = """
+                SELECT id, nome, email, cpf, periodo, turma
+                FROM alunos
+                UNION ALL
+                SELECT id, nome, email, cpf, periodo, turma 
+                FROM professores;
+            """
+            cursor.execute(query)
+
+            dados = cursor.fetchall()
+            return dados
+
         except mysql.connector.Error as e:
-            print(f"Erro ao selecionar todos os usuários: {e}")    
+            print(f"Erro ao buscar dados: {e}")
+            return "Erro ao buscar dados no banco"
 
     def delete_user(self, id):
         try:
@@ -161,4 +214,5 @@ db = Data_base()
 db.connect()
 db.create_table_new_user()
 db.create_table_new_student()
+db.create_table_new_teacher()
 db.close_connection()

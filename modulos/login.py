@@ -6,7 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from telas.tela_login import Ui_Dialog_login
-from modulos.registerM import open_cadastrar
+from modulos.registerUser import open_cadastrar
 from modulos.pagina_inicial import telaPrincipal
 from modulos.recuperacao import request_password
 from db.database import Data_base
@@ -40,7 +40,7 @@ class Login(QDialog):  # Nome da classe começa com maiúscula por convenção
             db.close_connection()
             return
 
-        pass_check = db.pega_dados("SELECT * FROM usuarios where email=%s AND senha = %s", (user, password))
+        pass_check = db.pega_dados(user, password)
 
         if not pass_check:
             QMessageBox.information(self, "Erro", "Senha inválida")
@@ -49,14 +49,13 @@ class Login(QDialog):  # Nome da classe começa com maiúscula por convenção
 
         else:
             QMessageBox.information(self, "Login realizado!", "Login realizado com sucesso!")
-            self.close()  # Fecha a tela de login
-            self.window = telaPrincipal()  # Certifique-se de que telaPrincipal herda de QMainWindow
+            self.close()  
+            self.window = telaPrincipal()  
             self.window.show()
        
 
         db.close_connection()
 
-# Criando a aplicação e executando
 app = QApplication(sys.argv)
 window = Login()  
 window.show()
