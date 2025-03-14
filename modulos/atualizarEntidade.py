@@ -25,22 +25,23 @@ class Entity_form(QDialog):
             self.aluno_cpf = aluno[2]
 
     def preencher_dados(self, aluno):
-        
+        print(aluno)
         self.ui.nome_input.setText(str(aluno[0]))  
         self.ui.email_imput.setText(str(aluno[1]))
         self.ui.cpf_input.setText(str(aluno[2])) 
         self.ui.nasc_input_2.setText(str(aluno[3])) 
-        self.ui.nasc_input.setText(str(aluno[4]))  
-        self.ui.estadoC_comboB.setCurrentText(str(aluno[5]))  
-        self.ui.endereco_input.setText(str(aluno[6]))
-        self.ui.sexo_ComboB.setCurrentText(str(aluno[7]))  
+        self.ui.estadoC_comboB.setCurrentText(str(aluno[4]))  
+        self.ui.endereco_input.setText(str(aluno[5]))
+        self.ui.sexo_ComboB.setCurrentText(str(aluno[6]))  
+        self.ui.nasc_input.setText(str(aluno[7]))  
         self.ui.tel1_input_2.setText(str(aluno[8]))  
-        self.ui.periodo_comboB.setCurrentText(str(aluno[9]))  
-        self.ui.turma_comboB.setCurrentText(str(aluno[10]))  
-
+        self.ui.estadoC_comboB_2.setCurrentText(str(aluno[9]))  
+        self.ui.periodo_comboB.setCurrentText(str(aluno[10]))  
+        self.ui.turma_comboB.setCurrentText(str(aluno[11])) 
+        
         self.ui.cadastrar_button.setText("Salvar")
         self.ui.cpf_input.setEnabled(False)  
-        self.ui.estadoC_comboB_2.setEnabled(False)  
+    
     
     def salvar_alteracoes(self):
        
@@ -55,22 +56,23 @@ class Entity_form(QDialog):
         tel = self.ui.tel1_input_2.text()
         periodo = self.ui.periodo_comboB.currentText()
         turma = self.ui.turma_comboB.currentText()
+        categoria = self.ui.estadoC_comboB_2.currentText()
         ativo = 1
 
-        if not all([nome, email, rg, cpf, endereco, sexo, nasc, tel, periodo, turma]):
+        if not all([nome, email, rg, cpf, endereco, sexo, nasc, tel, periodo, turma, categoria]):
             QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
             return
 
         db = Data_base()
         db.connect()
         
-        fullDataSet = (nome, email, rg, estadoC, endereco, sexo, nasc, tel, periodo, turma, ativo, cpf)
+        fullDataSet = (nome, email, rg, estadoC, endereco, sexo, nasc, tel, categoria, periodo, turma, ativo, cpf)
 
         sucesso = db.atualizar_entidade(fullDataSet)
 
         if sucesso:
             QMessageBox.information(self, "Sucesso", "Dados atualizados com sucesso!")
-            self.accept()  # Fecha o diálogo e retorna QDialog.Accepted
+            self.accept() 
         else:
             QMessageBox.warning(self, "Erro", "Erro ao atualizar os dados do aluno.")
 

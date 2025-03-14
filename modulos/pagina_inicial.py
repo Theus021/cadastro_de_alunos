@@ -22,6 +22,21 @@ class telaPrincipal(QMainWindow):
         self.ui.setupUi(self)
         self.ui.adicionar_button.clicked.connect(self.open_cadastrar_aluno)
         self.buscar_registros()
+        self.ui.search_input.textChanged.connect(self.filtrar_tabela)
+
+    def filtrar_tabela(self):
+        texto_pesquisa = self.ui.search_input.text().strip().lower()
+
+        for row in range(self.ui.tableWidget_2.rowCount()):
+            row_match = False  
+
+            for col in range(self.ui.tableWidget_2.columnCount()):
+                item = self.ui.tableWidget_2.item(row, col)  
+                if item and texto_pesquisa in item.text().strip().lower():
+                    row_match = True  
+                    break  
+
+            self.ui.tableWidget_2.setRowHidden(row, not row_match)
 
     def open_cadastrar_aluno(self):
         from modulos.cadastrarEntitade import Student_form

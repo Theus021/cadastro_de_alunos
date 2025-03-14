@@ -31,15 +31,12 @@ class Student_form(QDialog):
         tel= self.ui.tel1_input_2.text()
         periodo = self.ui.periodo_comboB.currentText()
         turma = self.ui.turma_comboB.currentText()
-       
-
         categoria = self.ui.estadoC_comboB_2.currentText()
+        ativo = 1
 
         if not all([nome, email, cpf, rg, endereco, sexo, nascimento, tel, categoria, periodo, turma]):
             QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
             return
-
-        ativo = 1
         
         fullDataSet = (nome, email, cpf, rg, estadoC, endereco, sexo, nasc, tel, categoria, periodo, turma, ativo)
         db = Data_base()

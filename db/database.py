@@ -24,7 +24,26 @@ class Data_base:
             )
             print("Conectado ao banco de dados com sucesso!")
         except mysql.connector.Error as e:
-            print(f"Erro ao conectar ao banco de dados: {e}")
+            if e.errno == 1049: 
+                print(f"Banco de dados '{self.database}' não encontrado. Criando automaticamente...")
+                self.criar_banco()
+                self.connect()
+                
+    def criar_banco(self):
+        try:
+            
+            temp_connection = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password
+            )
+            cursor = temp_connection.cursor()
+            cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.database}")
+            print(f"Banco de dados '{self.database}' criado com sucesso!")
+            cursor.close()
+            temp_connection.close()
+        except mysql.connector.Error as e:
+            print(f"Erro ao criar o banco de dados: {e}")
 
     def create_table_new_user(self):
         cursor = self.connection.cursor()
@@ -154,7 +173,7 @@ class Data_base:
         self.connect()
         cursor = self.connection.cursor()
         
-        cursor.execute("SELECT nome, email, cpf, rg, nascimento, estado_civil, endereco, sexo, telefone, periodo, turma FROM entidades WHERE id = %s", (entidade_id,))
+        cursor.execute("SELECT nome, email, cpf, rg, nascimento, estado_civil, endereco, sexo, telefone, categoria, periodo, turma FROM entidades WHERE id = %s", (entidade_id,))
         entidade = cursor.fetchone() 
         
         self.close_connection()
