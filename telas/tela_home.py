@@ -198,13 +198,13 @@ class Ui_MainWindow(object):
 "border-radius 5px}")
         self.prof_div_tg = QLabel(self.frame)
         self.prof_div_tg.setObjectName(u"prof_div_tg")
-        self.prof_div_tg.setGeometry(QRect(290, 120, 110, 2))
+        self.prof_div_tg.setGeometry(QRect(280, 120, 110, 2))
         self.prof_div_tg.setStyleSheet(u"QLabel{\n"
 "background: #CCC;\n"
 "border-radius 5px}")
         self.professores_tg = QPushButton(self.frame)
         self.professores_tg.setObjectName(u"professores_tg")
-        self.professores_tg.setGeometry(QRect(290, 90, 111, 23))
+        self.professores_tg.setGeometry(QRect(280, 90, 111, 23))
         self.professores_tg.setFont(font1)
         self.professores_tg.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.professores_tg.setStyleSheet(u"QPushButton{\n"
@@ -263,6 +263,20 @@ class Ui_MainWindow(object):
         self.tableWidget_2.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        if (self.tableWidget_2.rowCount() < 5):
+            self.tableWidget_2.setRowCount(5)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(0, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(1, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(2, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(3, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(4, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.tableWidget_2.setItem(0, 2, __qtablewidgetitem12)
         self.tableWidget_2.setObjectName(u"tableWidget_2")
         self.tableWidget_2.setGeometry(QRect(40, 180, 901, 301))
         self.tableWidget_2.setFont(font)
@@ -336,6 +350,21 @@ class Ui_MainWindow(object):
         self.tableWidget_2.verticalHeader().setMinimumSectionSize(30)
         self.tableWidget_2.verticalHeader().setDefaultSectionSize(42)
         self.tableWidget_2.verticalHeader().setHighlightSections(True)
+        self.inativos_div_tg = QLabel(self.frame)
+        self.inativos_div_tg.setObjectName(u"inativos_div_tg")
+        self.inativos_div_tg.setGeometry(QRect(420, 120, 110, 2))
+        self.inativos_div_tg.setStyleSheet(u"QLabel{\n"
+"background: #CCC;\n"
+"border-radius 5px}")
+        self.inativos_tg = QPushButton(self.frame)
+        self.inativos_tg.setObjectName(u"inativos_tg")
+        self.inativos_tg.setGeometry(QRect(420, 90, 111, 23))
+        self.inativos_tg.setFont(font1)
+        self.inativos_tg.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.inativos_tg.setStyleSheet(u"QPushButton{\n"
+"border: none;\n"
+"color: #B1B2B3\n"
+"}")
         self.adicionar_button = QPushButton(self.widget_3)
         self.adicionar_button.setObjectName(u"adicionar_button")
         self.adicionar_button.setGeometry(QRect(740, 40, 201, 41))
@@ -429,7 +458,7 @@ class Ui_MainWindow(object):
         self.text_header.setText(QCoreApplication.translate("MainWindow", u" Tech School", None))
         self.config_button_bar.setText(QCoreApplication.translate("MainWindow", u" Configura\u00e7\u00e3o", None))
         self.search_icon.setText("")
-        self.filtro_por_QcomboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Turma", None))
+        self.filtro_por_QcomboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Filtrar por", None))
         self.filtro_por_QcomboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Ads", None))
         self.filtro_por_QcomboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Data-science", None))
         self.filtro_por_QcomboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"Machine-learning", None))
@@ -459,6 +488,23 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Turma", None));
         ___qtablewidgetitem6 = self.tableWidget_2.horizontalHeaderItem(6)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"a\u00e7\u00f5es", None));
+        ___qtablewidgetitem7 = self.tableWidget_2.verticalHeaderItem(0)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem8 = self.tableWidget_2.verticalHeaderItem(1)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem9 = self.tableWidget_2.verticalHeaderItem(2)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem10 = self.tableWidget_2.verticalHeaderItem(3)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem11 = self.tableWidget_2.verticalHeaderItem(4)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+
+        __sortingEnabled = self.tableWidget_2.isSortingEnabled()
+        self.tableWidget_2.setSortingEnabled(False)
+        self.tableWidget_2.setSortingEnabled(__sortingEnabled)
+
+        self.inativos_div_tg.setText("")
+        self.inativos_tg.setText(QCoreApplication.translate("MainWindow", u"Inativos", None))
         self.adicionar_button.setText(QCoreApplication.translate("MainWindow", u" Add novo registro", None))
         self.ordenar_por_QcomboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Ordenar Por ", None))
         self.ordenar_por_QcomboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Nome", None))
