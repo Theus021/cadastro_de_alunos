@@ -29,7 +29,7 @@ class RequestPassword(QDialog):
 
         db = Data_base()  
         db.connect()
-        stored_email = db.confereEmail(email)
+        stored_email = db.verificaEmail(email)
 
         if stored_email:
             self.ui.senha_input.setEnabled(True)

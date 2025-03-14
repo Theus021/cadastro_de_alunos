@@ -9,14 +9,15 @@ from db.database import Data_base
 from telas.register_student import Ui_Dialog
 
 class Student_form(QDialog):
-    def __init__(self, *args, **argvs):
+    def __init__(self, atualizar_callback=None, *args, **argvs):
         super(Student_form, self).__init__(*args, **argvs)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.cadastrar_button.clicked.connect(self.cadastrar_entidade)
         self.ui.voltar_button.clicked.connect(self.close)
 
-       
+        self.atualizar_callback = atualizar_callback
+
     def cadastrar_entidade(self):
         nome = self.ui.nome_input.text()
         email = self.ui.email_imput.text()
@@ -40,51 +41,30 @@ class Student_form(QDialog):
 
         ativo = 1
         
-        fullDataSet = (nome, email, cpf, rg, estadoC, endereco, sexo, nasc, tel, periodo, turma, ativo)
+        fullDataSet = (nome, email, cpf, rg, estadoC, endereco, sexo, nasc, tel, categoria, periodo, turma, ativo)
         db = Data_base()
         db.connect()
 
-        if categoria.lower() == "aluno":
-            db.create_table_new_student()
-            verificaEmail = db.confereEmail(email)
+        db.create_table_new_entidade()
 
-            if verificaEmail:
-                 QMessageBox.warning(self, "Erro", "E-mail já cadastrado !")
+        verificaEmail = db.verificaEmail(email)
+        if verificaEmail:
+            QMessageBox.warning(self, "Erro", "Email já cadastrado !")
                  
-            sucesso = db.register_new_student(fullDataSet)
+        sucesso = db.register_new_entidade(fullDataSet)
 
-            if sucesso == "duplicate_entry":
-                QMessageBox.warning(self, "Erro", "CPF já cadastrado !")
+        if sucesso == "duplicate_entry":
+            QMessageBox.warning(self, "Erro", "Email ou CPF já cadastrado !")
 
-            elif sucesso:
-                QMessageBox.information(self, "Sucesso", f"{categoria} cadastrado com sucesso !")
-                self.close()    
+        elif sucesso:
+            QMessageBox.information(self, "Sucesso", f"{categoria} cadastrado com sucesso !")
+            if self.atualizar_callback:
+                self.atualizar_callback()
 
-            else:
-                QMessageBox.warning(self, "Erro", "Erro ao cadastrar usuário no sistema.")    
+            self.close()    
 
-        elif categoria.lower() == "professor":
-            db.create_table_new_teacher()
-            verificaEmail = db.confereEmail(email)
-
-            if verificaEmail:
-                 QMessageBox.warning(self, "Erro", "E-mail já cadastrado !")
-                 
-            sucesso = db.register_new_teacher(fullDataSet)
-
-            if sucesso == "duplicate_entry":
-                QMessageBox.warning(self, "Erro", "CPF já cadastrado !")    
-
-            elif sucesso:
-                QMessageBox.information(self, "Sucesso", f"{categoria} cadastrado com sucesso !")
-                self.close()             
-
-            else:
-                QMessageBox.warning(self, "Erro", "Erro ao cadastrar usuário no sistema.") 
-
-        else: 
-            QMessageBox.information(self, "Error", "Erro, categoria inválida !")
-            return
+        else:
+            QMessageBox.warning(self, "Erro", "Erro ao cadastrar usuário no sistema.")    
         
         db.close_connection()
 

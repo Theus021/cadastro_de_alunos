@@ -10,7 +10,6 @@ from PySide6.QtCore import Qt
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from modulos.cadastrarEntitade import Student_form, open_cadastrar_aluno
 from modulos.atualizarEntidade import Entity_form
 from telas.tela_home import Ui_MainWindow
 from db.database import Data_base
@@ -20,12 +19,17 @@ class telaPrincipal(QMainWindow):
         super(telaPrincipal, self).__init__(*args, **argvs)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.adicionar_button.clicked.connect(open_cadastrar_aluno)
+        self.ui.adicionar_button.clicked.connect(self.open_cadastrar_aluno)
         self.buscar_registros()
+
+    def open_cadastrar_aluno(self):
+        from modulos.cadastrarEntitade import Student_form
+        dialog = Student_form(atualizar_callback=self.buscar_registros)
+        dialog.exec_()
 
     def buscar_registros(self):
         db = Data_base()
-        resultado = db.select_all_users()
+        resultado = db.select_all_entidades()
         
         self.ui.tableWidget_2.setColumnWidth(0, 50)
         self.ui.tableWidget_2.setColumnWidth(1, 200)
@@ -73,7 +77,7 @@ class telaPrincipal(QMainWindow):
 
     def editarRegistros(self, aluno_id): 
         db = Data_base()
-        aluno = db.buscar_aluno_por_id(aluno_id)  # Busca os dados pelo ID
+        aluno = db.buscar_entidade_por_id(aluno_id)  # Busca os dados pelo ID
         db.close_connection()
 
         if aluno:

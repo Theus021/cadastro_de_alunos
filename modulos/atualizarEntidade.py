@@ -3,6 +3,7 @@ from PySide6.QtPrintSupport import *
 import sys
 import os
 import re
+from PySide6.QtCore import Qt
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -16,40 +17,36 @@ class Entity_form(QDialog):
         self.ui.setupUi(self)
         self.ui.cadastrar_button.clicked.connect(self.salvar_alteracoes)
         self.ui.voltar_button.clicked.connect(self.close)
-       
-      
-        self.aluno_cpf = None  # Inicializa o CPF do aluno
+    
+        self.aluno_cpf = None  
 
-        if aluno:  # Se recebeu um aluno, preenche os dados
+        if aluno:
             self.preencher_dados(aluno)
             self.aluno_cpf = aluno[2]
 
-        
-
     def preencher_dados(self, aluno):
-        """ Preenche os campos do formulário com os dados do aluno """
-        self.ui.nome_input.setText(str(aluno[0]))  # Convertendo para string
+        
+        self.ui.nome_input.setText(str(aluno[0]))  
         self.ui.email_imput.setText(str(aluno[1]))
-        self.ui.cpf_input.setText(str(aluno[2]))  # CPF
-        self.ui.nasc_input_2.setText(str(aluno[3]))  # RG
-        self.ui.nasc_input.setText(str(aluno[4]))  # Nascimento
-        self.ui.estadoC_comboB.setCurrentText(str(aluno[5]))  # Estado Civil
+        self.ui.cpf_input.setText(str(aluno[2])) 
+        self.ui.nasc_input_2.setText(str(aluno[3])) 
+        self.ui.nasc_input.setText(str(aluno[4]))  
+        self.ui.estadoC_comboB.setCurrentText(str(aluno[5]))  
         self.ui.endereco_input.setText(str(aluno[6]))
-        self.ui.sexo_ComboB.setCurrentText(str(aluno[7]))  # Sexo
-        self.ui.tel1_input_2.setText(str(aluno[8]))  # Telefone
-        self.ui.periodo_comboB.setCurrentText(str(aluno[9]))  # Período
-        self.ui.turma_comboB.setCurrentText(str(aluno[10]))  # 
+        self.ui.sexo_ComboB.setCurrentText(str(aluno[7]))  
+        self.ui.tel1_input_2.setText(str(aluno[8]))  
+        self.ui.periodo_comboB.setCurrentText(str(aluno[9]))  
+        self.ui.turma_comboB.setCurrentText(str(aluno[10]))  
 
-        # Alterar o botão para "Salvar Alterações"
         self.ui.cadastrar_button.setText("Salvar")
         self.ui.cpf_input.setEnabled(False)  
         self.ui.estadoC_comboB_2.setEnabled(False)  
-
+    
     def salvar_alteracoes(self):
-        """ Salva as alterações no banco de dados """
+       
         nome = self.ui.nome_input.text()
         email = self.ui.email_imput.text()
-        cpf = self.ui.cpf_input.text()  # CPF continua o mesmo
+        cpf = self.ui.cpf_input.text()  
         rg = self.ui.nasc_input_2.text()
         nasc = self.ui.nasc_input.text()
         estadoC = self.ui.estadoC_comboB.currentText()
@@ -67,9 +64,9 @@ class Entity_form(QDialog):
         db = Data_base()
         db.connect()
         
-        fullDataSet = (nome, email, cpf, rg, estadoC, endereco, sexo, nasc, tel, periodo, turma, ativo)
+        fullDataSet = (nome, email, rg, estadoC, endereco, sexo, nasc, tel, periodo, turma, ativo, cpf)
 
-        sucesso = db.atualizar_aluno(fullDataSet)
+        sucesso = db.atualizar_entidade(fullDataSet)
 
         if sucesso:
             QMessageBox.information(self, "Sucesso", "Dados atualizados com sucesso!")

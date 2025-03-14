@@ -33,14 +33,14 @@ class Login(QDialog):  # Nome da classe começa com maiúscula por convenção
 
         db = Data_base()
         db.connect()
-        email_check = db.confereEmail(user)
+        email_check = db.verificaEmail(user)
 
         if not email_check:
             QMessageBox.information(self, "Erro", "E-mail ou senha inválida")
             db.close_connection()
             return
 
-        pass_check = db.pega_dados(user, password)
+        pass_check = db.confere_dados_user(user, password)
 
         if not pass_check:
             QMessageBox.information(self, "Erro", "Senha inválida")

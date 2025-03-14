@@ -30,7 +30,7 @@ class Ui_dialog_login(QDialog):
 
         db = Data_base()
         db.connect()
-        verificaEmail = db.confereEmail(email)
+        verificaEmail = db.verificaEmail(email)
 
         if verificaEmail:
             QMessageBox.information(self, "Error", "Email Já cadastrado !")
