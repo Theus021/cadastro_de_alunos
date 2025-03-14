@@ -13,6 +13,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from modulos.atualizarEntidade import Entity_form
 from telas.tela_home import Ui_MainWindow
 from db.database import Data_base
+from utils.estilo_botao import botoesDeAcao
 
 class telaPrincipal(QMainWindow):
     def __init__(self, *args, **argvs):
@@ -50,30 +51,10 @@ class telaPrincipal(QMainWindow):
 
             aluno_id = row_data[0] 
 
-            botoes = self.botoesDeAcao(aluno_id)
+            botoes = botoesDeAcao(self, aluno_id)
             self.ui.tableWidget_2.setCellWidget(row_index, 6, botoes)
             
         db.close_connection() 
-
-    def botoesDeAcao(self, aluno_id ):
-        
-        widget = QWidget()
-        layout = QHBoxLayout(widget)
-        layout.setContentsMargins(0, 0, 0, 0)
-
-        self.edit_button = QPushButton("✏️", self)
-        self.edit_button.setStyleSheet("background-color: blue;")
-        self.edit_button.setFixedSize(56, 26) 
-        self.edit_button.clicked.connect(lambda: self.editarRegistros(aluno_id))
-
-        self.delete_button = QPushButton("🗑️", self)
-        self.delete_button.setStyleSheet("background-color: red;")
-        self.delete_button.setFixedSize(56, 26)  
-        self.delete_button.clicked.connect(lambda: self.deletarRegistro(aluno_id))   
-
-        layout.addWidget(self.edit_button)
-        layout.addWidget(self.delete_button)
-        return widget
 
     def editarRegistros(self, aluno_id): 
         db = Data_base()

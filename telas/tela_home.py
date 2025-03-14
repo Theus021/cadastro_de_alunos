@@ -279,7 +279,9 @@ class Ui_MainWindow(object):
         self.tableWidget_2.setItem(0, 2, __qtablewidgetitem12)
         self.tableWidget_2.setObjectName(u"tableWidget_2")
         self.tableWidget_2.setGeometry(QRect(40, 180, 901, 301))
-        self.tableWidget_2.setFont(font)
+        font3 = QFont()
+        font3.setBold(False)
+        self.tableWidget_2.setFont(font3)
         self.tableWidget_2.setFocusPolicy(Qt.NoFocus)
         self.tableWidget_2.setLayoutDirection(Qt.LeftToRight)
         self.tableWidget_2.setStyleSheet(u"QTableWidget{\n"
@@ -368,10 +370,10 @@ class Ui_MainWindow(object):
         self.adicionar_button = QPushButton(self.widget_3)
         self.adicionar_button.setObjectName(u"adicionar_button")
         self.adicionar_button.setGeometry(QRect(740, 40, 201, 41))
-        font3 = QFont()
-        font3.setPointSize(12)
-        font3.setBold(True)
-        self.adicionar_button.setFont(font3)
+        font4 = QFont()
+        font4.setPointSize(12)
+        font4.setBold(True)
+        self.adicionar_button.setFont(font4)
         self.adicionar_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.adicionar_button.setStyleSheet(u"QPushButton{\n"
 "background: #32CD32;\n"

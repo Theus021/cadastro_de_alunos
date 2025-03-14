@@ -140,7 +140,7 @@ class Data_base:
             db.connect()
             cursor = db.connection.cursor()
 
-            query = ("SELECT id, nome, email, cpf, periodo, turma FROM entidades")
+            query = ("SELECT id, nome, email, cpf, periodo, turma FROM entidades WHERE isAtivo = 1")
             cursor.execute(query)
 
             dados = cursor.fetchall()
@@ -178,7 +178,7 @@ class Data_base:
         cursor = self.connection.cursor()
         
         try:
-            cursor.execute("DELETE FROM entidades WHERE id = %s", (id,))
+            cursor.execute("UPDATE entidades SET isAtivo = 0 WHERE id =%s", (id,))
 
             self.connection.commit()
 

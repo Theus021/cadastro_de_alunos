@@ -12,5 +12,7 @@
     <file>icon_test.png</file>
     <file>icon_seta_drop.png</file>
     <file>icon_soma.png</file>
+    <file>icon_lápis_30.png</file>	
+    <file>icon_lixeira_30.png</file>
   </qresource>
 </RCC>

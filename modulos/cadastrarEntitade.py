@@ -49,7 +49,7 @@ class Student_form(QDialog):
 
         verificaEmail = db.verificaEmail(email)
         if verificaEmail:
-            QMessageBox.warning(self, "Erro", "Email já cadastrado !")
+            QMessageBox.warning(self, "Erro", "Email já cadastrado !") 
                  
         sucesso = db.register_new_entidade(fullDataSet)
 
