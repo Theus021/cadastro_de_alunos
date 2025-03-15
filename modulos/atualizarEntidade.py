@@ -29,18 +29,19 @@ class Entity_form(QDialog):
         self.ui.nome_input.setText(str(aluno[0]))  
         self.ui.email_imput.setText(str(aluno[1]))
         self.ui.cpf_input.setText(str(aluno[2])) 
-        self.ui.nasc_input_2.setText(str(aluno[3])) 
-        self.ui.estadoC_comboB.setCurrentText(str(aluno[4]))  
-        self.ui.endereco_input.setText(str(aluno[5]))
-        self.ui.sexo_ComboB.setCurrentText(str(aluno[6]))  
-        self.ui.nasc_input.setText(str(aluno[7]))  
-        self.ui.tel1_input_2.setText(str(aluno[8]))  
-        self.ui.estadoC_comboB_2.setCurrentText(str(aluno[9]))  
+        self.ui.rg_input.setText(str(aluno[3])) 
+        self.ui.estadoCivil_comboB.setCurrentText(str(aluno[5]))  
+        self.ui.endereco_input.setText(str(aluno[6]))
+        self.ui.sexo_ComboB.setCurrentText(str(aluno[7]))  
+        self.ui.nascimento_input.setText(str(aluno[4]))  
+        self.ui.telefone_input.setText(str(aluno[8]))  
+        self.ui.categoria_comboB.setCurrentText(str(aluno[9]))  
         self.ui.periodo_comboB.setCurrentText(str(aluno[10]))  
         self.ui.turma_comboB.setCurrentText(str(aluno[11])) 
         
         self.ui.cadastrar_button.setText("Salvar")
         self.ui.cpf_input.setEnabled(False)  
+        self.ui.categoria_comboB.setEnabled(False)
     
     
     def salvar_alteracoes(self):
@@ -48,15 +49,15 @@ class Entity_form(QDialog):
         nome = self.ui.nome_input.text()
         email = self.ui.email_imput.text()
         cpf = self.ui.cpf_input.text()  
-        rg = self.ui.nasc_input_2.text()
-        nasc = self.ui.nasc_input.text()
-        estadoC = self.ui.estadoC_comboB.currentText()
+        rg = self.ui.rg_input.text()
+        nasc = self.ui.nascimento_input.text()
+        estadoC = self.ui.estadoCivil_comboB.currentText()
         endereco = self.ui.endereco_input.text()
         sexo = self.ui.sexo_ComboB.currentText()
-        tel = self.ui.tel1_input_2.text()
+        tel = self.ui.telefone_input.text()
         periodo = self.ui.periodo_comboB.currentText()
         turma = self.ui.turma_comboB.currentText()
-        categoria = self.ui.estadoC_comboB_2.currentText()
+        categoria = self.ui.categoria_comboB.currentText()
         ativo = 1
 
         if not all([nome, email, rg, cpf, endereco, sexo, nasc, tel, periodo, turma, categoria]):

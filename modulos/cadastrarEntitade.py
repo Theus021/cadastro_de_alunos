@@ -22,16 +22,16 @@ class Student_form(QDialog):
         nome = self.ui.nome_input.text()
         email = self.ui.email_imput.text()
         cpf = self.ui.cpf_input.text()
-        rg = self.ui.nasc_input_2.text()
-        nascimento = self.ui.nasc_input.text()
-        estadoC = self.ui.estadoC_comboB.currentText()
+        rg = self.ui.rg_input.text()
+        nascimento = self.ui.nascimento_input.text()
+        estadoC = self.ui.estadoCivil_comboB.currentText()
         endereco = self.ui.endereco_input.text()
         sexo = self.ui.sexo_ComboB.currentText()
-        nasc = self.ui.nasc_input.text()
-        tel= self.ui.tel1_input_2.text()
+        nasc = self.ui.nascimento_input.text()
+        tel= self.ui.telefone_input.text()
         periodo = self.ui.periodo_comboB.currentText()
         turma = self.ui.turma_comboB.currentText()
-        categoria = self.ui.estadoC_comboB_2.currentText()
+        categoria = self.ui.categoria_comboB.currentText()
         ativo = 1
 
         if not all([nome, email, cpf, rg, endereco, sexo, nascimento, tel, categoria, periodo, turma]):

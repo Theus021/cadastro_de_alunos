@@ -110,14 +110,15 @@ class Ui_Dialog(object):
         self.estadoC_text_input.setStyleSheet(u"QLabel{\n"
 "color:#999A9A;\n"
 " font-weight: 600;}")
-        self.estadoC_comboB = QComboBox(self.frame)
-        self.estadoC_comboB.addItem("")
-        self.estadoC_comboB.addItem("")
-        self.estadoC_comboB.addItem("")
-        self.estadoC_comboB.addItem("")
-        self.estadoC_comboB.setObjectName(u"estadoC_comboB")
-        self.estadoC_comboB.setGeometry(QRect(20, 290, 215, 40))
-        self.estadoC_comboB.setStyleSheet(u"QComboBox{\n"
+        self.estadoCivil_comboB = QComboBox(self.frame)
+        self.estadoCivil_comboB.addItem("")
+        self.estadoCivil_comboB.addItem("")
+        self.estadoCivil_comboB.addItem("")
+        self.estadoCivil_comboB.addItem("")
+        self.estadoCivil_comboB.setObjectName(u"estadoC_comboB")
+        self.estadoCivil_comboB.setGeometry(QRect(20, 290, 215, 40))
+        self.estadoCivil_comboB.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.estadoCivil_comboB.setStyleSheet(u"QComboBox{\n"
 "border: 1px solid #ced4da;\n"
 "border-radius: 3px;\n"
 "padding-left:15px;\n"
@@ -195,6 +196,7 @@ class Ui_Dialog(object):
         self.sexo_ComboB.addItem("")
         self.sexo_ComboB.setObjectName(u"sexo_ComboB")
         self.sexo_ComboB.setGeometry(QRect(490, 130, 230, 40))
+        self.sexo_ComboB.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.sexo_ComboB.setStyleSheet(u"QComboBox{\n"
 "border: 1px solid #ced4da;\n"
 "border-radius: 3px;\n"
@@ -245,10 +247,10 @@ class Ui_Dialog(object):
         self.nasc_text_input.setStyleSheet(u"QLabel{\n"
 "color:#999A9A;\n"
 " font-weight: 600;}")
-        self.nasc_input = QLineEdit(self.frame)
-        self.nasc_input.setObjectName(u"nasc_input")
-        self.nasc_input.setGeometry(QRect(490, 210, 230, 40))
-        self.nasc_input.setStyleSheet(u"QLineEdit{\n"
+        self.nascimento_input = QLineEdit(self.frame)
+        self.nascimento_input.setObjectName(u"nasc_input")
+        self.nascimento_input.setGeometry(QRect(490, 210, 230, 40))
+        self.nascimento_input.setStyleSheet(u"QLineEdit{\n"
 "font-size:14px;\n"
 "background: #FFFFFF;\n"
 "border: 1px solid #ccc;\n"
@@ -267,10 +269,10 @@ class Ui_Dialog(object):
         self.rg_text_input.setStyleSheet(u"QLabel{\n"
 "color:#999A9A;\n"
 " font-weight: 600;}")
-        self.nasc_input_2 = QLineEdit(self.frame)
-        self.nasc_input_2.setObjectName(u"nasc_input_2")
-        self.nasc_input_2.setGeometry(QRect(250, 210, 225, 40))
-        self.nasc_input_2.setStyleSheet(u"QLineEdit{\n"
+        self.rg_input = QLineEdit(self.frame)
+        self.rg_input.setObjectName(u"nasc_input_2")
+        self.rg_input.setGeometry(QRect(250, 210, 225, 40))
+        self.rg_input.setStyleSheet(u"QLineEdit{\n"
 "font-size:14px;\n"
 "background: #FFFFFF;\n"
 "border: 1px solid #ccc;\n"
@@ -350,10 +352,10 @@ class Ui_Dialog(object):
         self.tel1_text_input_2.setStyleSheet(u"QLabel{\n"
 "color:#999A9A;\n"
 " font-weight: 600;}")
-        self.tel1_input_2 = QLineEdit(self.frame)
-        self.tel1_input_2.setObjectName(u"tel1_input_2")
-        self.tel1_input_2.setGeometry(QRect(490, 290, 230, 40))
-        self.tel1_input_2.setStyleSheet(u"QLineEdit{\n"
+        self.telefone_input = QLineEdit(self.frame)
+        self.telefone_input.setObjectName(u"tel1_input_2")
+        self.telefone_input.setGeometry(QRect(490, 290, 230, 40))
+        self.telefone_input.setStyleSheet(u"QLineEdit{\n"
 "font-size:14px;\n"
 "background: #FFFFFF;\n"
 "border: 1px solid #ccc;\n"
@@ -365,13 +367,14 @@ class Ui_Dialog(object):
 "QLineEdit:focus{\n"
 "border: 2px solid #c2dbfe\n"
 "}")
-        self.estadoC_comboB_2 = QComboBox(self.frame)
-        self.estadoC_comboB_2.addItem("")
-        self.estadoC_comboB_2.addItem("")
-        self.estadoC_comboB_2.addItem("")
-        self.estadoC_comboB_2.setObjectName(u"estadoC_comboB_2")
-        self.estadoC_comboB_2.setGeometry(QRect(250, 290, 225, 40))
-        self.estadoC_comboB_2.setStyleSheet(u"QComboBox{\n"
+        self.categoria_comboB = QComboBox(self.frame)
+        self.categoria_comboB.addItem("")
+        self.categoria_comboB.addItem("")
+        self.categoria_comboB.addItem("")
+        self.categoria_comboB.setObjectName(u"estadoC_comboB_2")
+        self.categoria_comboB.setGeometry(QRect(250, 290, 225, 40))
+        self.categoria_comboB.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.categoria_comboB.setStyleSheet(u"QComboBox{\n"
 "border: 1px solid #ced4da;\n"
 "border-radius: 3px;\n"
 "padding-left:15px;\n"
@@ -427,6 +430,7 @@ class Ui_Dialog(object):
         self.periodo_comboB.addItem("")
         self.periodo_comboB.setObjectName(u"periodo_comboB")
         self.periodo_comboB.setGeometry(QRect(410, 370, 141, 40))
+        self.periodo_comboB.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.periodo_comboB.setStyleSheet(u"QComboBox{\n"
 "border: 1px solid #ced4da;\n"
 "border-radius: 3px;\n"
@@ -485,6 +489,7 @@ class Ui_Dialog(object):
         self.turma_comboB.addItem("")
         self.turma_comboB.setObjectName(u"turma_comboB")
         self.turma_comboB.setGeometry(QRect(570, 370, 151, 40))
+        self.turma_comboB.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.turma_comboB.setStyleSheet(u"QComboBox{\n"
 "border: 1px solid #ced4da;\n"
 "border-radius: 3px;\n"
@@ -543,15 +548,15 @@ class Ui_Dialog(object):
         self.nome_input.raise_()
         self.email_imput.raise_()
         self.cpf_input.raise_()
-        self.estadoC_comboB.raise_()
+        self.estadoCivil_comboB.raise_()
         self.endereco_input.raise_()
         self.sexo_ComboB.raise_()
-        self.nasc_input.raise_()
-        self.nasc_input_2.raise_()
+        self.nascimento_input.raise_()
+        self.rg_input.raise_()
         self.cadastrar_button.raise_()
         self.voltar_button.raise_()
-        self.tel1_input_2.raise_()
-        self.estadoC_comboB_2.raise_()
+        self.telefone_input.raise_()
+        self.categoria_comboB.raise_()
         self.periodo_comboB.raise_()
         self.turma_comboB.raise_()
         self.widget = QWidget(Dialog)
@@ -588,13 +593,14 @@ class Ui_Dialog(object):
         self.email_imput.setText("")
         self.email_imput.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite o e-mail", None))
         self.cpf_text_input.setText(QCoreApplication.translate("Dialog", u"CPF *", None))
+        self.cpf_input.setInputMask("")
         self.cpf_input.setText("")
         self.cpf_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite o CPF", None))
         self.estadoC_text_input.setText(QCoreApplication.translate("Dialog", u"Estado civil", None))
-        self.estadoC_comboB.setItemText(0, QCoreApplication.translate("Dialog", u"Estado civil", None))
-        self.estadoC_comboB.setItemText(1, QCoreApplication.translate("Dialog", u"Solteiro", None))
-        self.estadoC_comboB.setItemText(2, QCoreApplication.translate("Dialog", u"Casado", None))
-        self.estadoC_comboB.setItemText(3, QCoreApplication.translate("Dialog", u"Vi\u00favo", None))
+        self.estadoCivil_comboB.setItemText(0, QCoreApplication.translate("Dialog", u"Estado civil", None))
+        self.estadoCivil_comboB.setItemText(1, QCoreApplication.translate("Dialog", u"Solteiro", None))
+        self.estadoCivil_comboB.setItemText(2, QCoreApplication.translate("Dialog", u"Casado", None))
+        self.estadoCivil_comboB.setItemText(3, QCoreApplication.translate("Dialog", u"Vi\u00favo", None))
 
         self.endereco_text_input.setText(QCoreApplication.translate("Dialog", u"Endere\u00e7o  *", None))
         self.endereco_input.setText("")
@@ -605,17 +611,17 @@ class Ui_Dialog(object):
         self.sexo_ComboB.setItemText(2, QCoreApplication.translate("Dialog", u"Feminino", None))
 
         self.nasc_text_input.setText(QCoreApplication.translate("Dialog", u"Nascimento *", None))
-        self.nasc_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite a data de nascimento", None))
+        self.nascimento_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite a data de nascimento", None))
         self.rg_text_input.setText(QCoreApplication.translate("Dialog", u"RG *", None))
-        self.nasc_input_2.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite o rg", None))
+        self.rg_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite o rg", None))
         self.categoria_input.setText(QCoreApplication.translate("Dialog", u"Categoria *", None))
         self.cadastrar_button.setText(QCoreApplication.translate("Dialog", u"Cadastrar", None))
         self.voltar_button.setText(QCoreApplication.translate("Dialog", u"Voltar", None))
         self.tel1_text_input_2.setText(QCoreApplication.translate("Dialog", u"Telefone 1 *", None))
-        self.tel1_input_2.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite outro telefone", None))
-        self.estadoC_comboB_2.setItemText(0, QCoreApplication.translate("Dialog", u"Categoria", None))
-        self.estadoC_comboB_2.setItemText(1, QCoreApplication.translate("Dialog", u"Professor", None))
-        self.estadoC_comboB_2.setItemText(2, QCoreApplication.translate("Dialog", u"Aluno", None))
+        self.telefone_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Digite outro telefone", None))
+        self.categoria_comboB.setItemText(0, QCoreApplication.translate("Dialog", u"Categoria", None))
+        self.categoria_comboB.setItemText(1, QCoreApplication.translate("Dialog", u"Professor", None))
+        self.categoria_comboB.setItemText(2, QCoreApplication.translate("Dialog", u"Aluno", None))
 
         self.periodoC_text_input.setText(QCoreApplication.translate("Dialog", u"Per\u00edodo", None))
         self.periodo_comboB.setItemText(0, QCoreApplication.translate("Dialog", u"Per\u00edodo", None))
