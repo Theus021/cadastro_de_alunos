@@ -6,7 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from telas.tela_login import Ui_Dialog_login
-from modulos.registerUser import open_cadastrar
+from modulos.registro_usuario import open_cadastrar
 from modulos.pagina_inicial import telaPrincipal
 from modulos.recuperacao import request_password
 from db.database import Data_base

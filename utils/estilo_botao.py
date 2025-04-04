@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QHBoxLayout, QPushButton, QWidget
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QCursor
 from PySide6.QtPrintSupport import *
 import sys
 import os
@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt, QSize
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from modulos.atualizarEntidade import Entity_form
+from modulos.atualizar_entidade import Entity_form
 from telas.tela_home import Ui_MainWindow
 from db.database import Data_base
 
@@ -42,6 +42,7 @@ def botoesDeAcao(self, aluno_id ):
 "}")
     self.edit_button.setFixedSize(56, 26) 
     self.edit_button.clicked.connect(lambda: self.editarRegistros(aluno_id))
+    self.edit_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
     self.delete_button = QPushButton("", self)
     icon2 = QIcon()
@@ -66,6 +67,7 @@ def botoesDeAcao(self, aluno_id ):
 "}")
     self.delete_button.setFixedSize(56, 26)  
     self.delete_button.clicked.connect(lambda: self.deletarRegistro(aluno_id))   
+    self.delete_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
     layout.addWidget(self.edit_button)
     layout.addWidget(self.delete_button)

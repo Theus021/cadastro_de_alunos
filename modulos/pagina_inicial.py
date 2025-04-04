@@ -10,7 +10,7 @@ from PySide6.QtCore import Qt
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from modulos.atualizarEntidade import Entity_form
+from modulos.atualizar_entidade import Entity_form
 from telas.tela_home import Ui_MainWindow
 from db.database import Data_base
 from utils.estilo_botao import botoesDeAcao
@@ -27,10 +27,12 @@ class telaPrincipal(QMainWindow):
     def filtrar_tabela(self):
         texto_pesquisa = self.ui.search_input.text().strip().lower()
 
+        colunas_para_pesquisar = {1, 2, 3}  
+
         for row in range(self.ui.tableWidget_2.rowCount()):
             row_match = False  
 
-            for col in range(self.ui.tableWidget_2.columnCount()):
+            for col in colunas_para_pesquisar:
                 item = self.ui.tableWidget_2.item(row, col)  
                 if item and texto_pesquisa in item.text().strip().lower():
                     row_match = True  
@@ -39,7 +41,7 @@ class telaPrincipal(QMainWindow):
             self.ui.tableWidget_2.setRowHidden(row, not row_match)
 
     def open_cadastrar_aluno(self):
-        from modulos.cadastrarEntitade import Student_form
+        from modulos.cadastrar_entitade import Student_form
         dialog = Student_form(atualizar_callback=self.buscar_registros)
         dialog.exec_()
 
@@ -73,14 +75,14 @@ class telaPrincipal(QMainWindow):
 
     def editarRegistros(self, aluno_id): 
         db = Data_base()
-        aluno = db.buscar_entidade_por_id(aluno_id)  # Busca os dados pelo ID
+        aluno = db.buscar_entidade_por_id(aluno_id)  
         db.close_connection()
 
         if aluno:
-            dialog = Entity_form(aluno=aluno)  # Passa os dados para o formulário
+            dialog = Entity_form(aluno=aluno)  
 
-            if dialog.exec_() == QDialog.Accepted:  # Se salvar os dados
-                self.buscar_registros()  # Atualiza a tabela
+            if dialog.exec_() == QDialog.Accepted:  
+                self.buscar_registros()  
         else:
             QMessageBox.warning(self, "Erro", "Aluno não encontrado no banco de dados.")
 
