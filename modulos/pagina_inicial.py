@@ -14,6 +14,7 @@ from modulos.atualizar_entidade import Entity_form
 from telas.tela_home import Ui_MainWindow
 from db.database import Data_base
 from utils.estilo_botao import botoesDeAcao
+from utils.alinhador_celula import ElidedItemDelegate
 
 class telaPrincipal(QMainWindow):
     def __init__(self, *args, **argvs):
@@ -49,6 +50,9 @@ class telaPrincipal(QMainWindow):
         db = Data_base()
         resultado = db.select_all_entidades()
         
+        delegate = ElidedItemDelegate(self.ui.tableWidget_2)
+        self.ui.tableWidget_2.setItemDelegateForColumn(2, delegate)
+
         self.ui.tableWidget_2.setColumnWidth(0, 50)
         self.ui.tableWidget_2.setColumnWidth(1, 200)
         self.ui.tableWidget_2.setColumnWidth(2, 150)
