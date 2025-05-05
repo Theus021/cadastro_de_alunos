@@ -57,7 +57,7 @@ class Data_base:
         self.connection.commit() 
 
     def register_new_user(self, fullDataSet):
-        """ Registra um novo usuário no banco de dados. """
+    
         try:
             cursor = self.connection.cursor()
 
@@ -120,13 +120,13 @@ class Data_base:
         id INT AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
-        cpf VARCHAR(14) NOT NULL UNIQUE,
-        rg VARCHAR(12) NOT NULL,
+        cpf VARCHAR(20) NOT NULL UNIQUE,
+        rg VARCHAR(20) NOT NULL,
         estado_civil ENUM('Solteiro', 'Casado', 'Viuvo') NOT NULL,
-        endereco TEXT NOT NULL,
+        endereco VARCHAR(100) NOT NULL,
         sexo ENUM('Masculino', 'Feminino') NOT NULL,
         nascimento DATE NOT NULL,
-        telefone VARCHAR(15) NOT NULL,
+        telefone VARCHAR(20) NOT NULL,
         categoria ENUM('Aluno', 'Professor') NOT NULL,
         periodo ENUM('Diurno', 'Noturno') NOT NULL,
         turma ENUM('Ads', 'Data-science', 'Machine-learning', 'Software-engineer') NOT NULL,
@@ -184,7 +184,7 @@ class Data_base:
         try:
             query = """UPDATE entidades SET 
                         nome = %s, email = %s, rg = %s, estado_civil = %s, endereco = %s, 
-                        sexo = %s, nascimento = %s, telefone = %s, periodo = %s, turma = %s, isAtivo =%s
+                        sexo = %s, nascimento = %s, telefone = %s, categoria = %s, periodo = %s, turma = %s, isAtivo =%s
                         WHERE cpf =%s"""
             cursor.execute(query, fullDataSet)
             self.connection.commit()

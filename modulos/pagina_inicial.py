@@ -54,8 +54,8 @@ class telaPrincipal(QMainWindow):
         self.ui.tableWidget_2.setItemDelegateForColumn(2, delegate)
 
         self.ui.tableWidget_2.setColumnWidth(0, 50)
-        self.ui.tableWidget_2.setColumnWidth(1, 200)
-        self.ui.tableWidget_2.setColumnWidth(2, 150)
+        self.ui.tableWidget_2.setColumnWidth(1, 150)
+        self.ui.tableWidget_2.setColumnWidth(2, 200)
         self.ui.tableWidget_2.setColumnWidth(3, 150)
         self.ui.tableWidget_2.setColumnWidth(4, 80)
         self.ui.tableWidget_2.setColumnWidth(5, 120)

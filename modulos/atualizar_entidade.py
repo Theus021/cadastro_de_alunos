@@ -1,9 +1,10 @@
-from PySide6.QtWidgets import (QDialog, QMessageBox)
+from turtle import st
+from PySide6.QtWidgets import QDialog, QMessageBox
 from PySide6.QtPrintSupport import *
 import sys
 import os
-import re
 from PySide6.QtCore import Qt
+from datetime import datetime
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -11,13 +12,13 @@ from db.database import Data_base
 from telas.register_student import Ui_Dialog
 
 class Entity_form(QDialog):
-    def __init__(self, aluno = None, *args, **argvs):
+    def __init__(self, aluno=None, *args, **argvs):
         super(Entity_form, self).__init__(*args, **argvs)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.cadastrar_button.clicked.connect(self.salvar_alteracoes)
         self.ui.voltar_button.clicked.connect(self.close)
-    
+
         self.aluno_cpf = None  
 
         if aluno:
@@ -33,24 +34,26 @@ class Entity_form(QDialog):
         self.ui.estadoCivil_comboB.setCurrentText(str(aluno[5]))  
         self.ui.endereco_input.setText(str(aluno[6]))
         self.ui.sexo_ComboB.setCurrentText(str(aluno[7]))  
-        self.ui.nascimento_input.setText(str(aluno[4]))  
+        try:
+            data_nascimento = datetime.strptime(str(aluno[4]), '%Y-%m-%d').strftime('%d/%m/%Y')
+        except ValueError:
+            data_nascimento = "" 
+        self.ui.nascimento_input.setText(data_nascimento)
         self.ui.telefone_input.setText(str(aluno[8]))  
         self.ui.categoria_comboB.setCurrentText(str(aluno[9]))  
         self.ui.periodo_comboB.setCurrentText(str(aluno[10]))  
         self.ui.turma_comboB.setCurrentText(str(aluno[11])) 
         
         self.ui.cadastrar_button.setText("Salvar")
-        self.ui.cpf_input.setEnabled(False)  
+        self.ui.cpf_input.setEnabled(False) 
         self.ui.categoria_comboB.setEnabled(False)
-    
-    
+
     def salvar_alteracoes(self):
-       
         nome = self.ui.nome_input.text()
         email = self.ui.email_imput.text()
         cpf = self.ui.cpf_input.text()  
         rg = self.ui.rg_input.text()
-        nasc = self.ui.nascimento_input.text()
+        nasc_br = self.ui.nascimento_input.text()
         estadoC = self.ui.estadoCivil_comboB.currentText()
         endereco = self.ui.endereco_input.text()
         sexo = self.ui.sexo_ComboB.currentText()
@@ -60,14 +63,23 @@ class Entity_form(QDialog):
         categoria = self.ui.categoria_comboB.currentText()
         ativo = 1
 
-        if not all([nome, email, rg, cpf, endereco, sexo, nasc, tel, periodo, turma, categoria]):
+        if not all([nome, email, rg, cpf, endereco, sexo, nasc_br, tel, periodo, turma, categoria]):
             QMessageBox.information(self, "Campos vazios", "Preencha todos os campos")
+            return
+
+        try:
+            nasc_formatada = datetime.strptime(nasc_br, '%d/%m/%Y').strftime('%Y-%m-%d')
+        except ValueError:
+            QMessageBox.warning(self, "Erro", "Data de nascimento inválida. Use o formato DD/MM/AAAA.")
             return
 
         db = Data_base()
         db.connect()
-        
-        fullDataSet = (nome, email, rg, estadoC, endereco, sexo, nasc, tel, categoria, periodo, turma, ativo, cpf)
+
+        fullDataSet = (
+            nome, email, rg, estadoC, endereco, sexo,
+            nasc_formatada, tel, categoria, periodo, turma, ativo, cpf
+        )
 
         sucesso = db.atualizar_entidade(fullDataSet)
 
