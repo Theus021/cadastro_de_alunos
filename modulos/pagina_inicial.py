@@ -24,6 +24,8 @@ class telaPrincipal(QMainWindow):
         self.ui.adicionar_button.clicked.connect(self.open_cadastrar_aluno)
         self.buscar_registros()
         self.ui.search_input.textChanged.connect(self.filtrar_tabela)
+        self.ui.alunos_tg.clicked.connect(lambda: self.buscar_registros("Aluno"))
+        self.ui.professores_tg.clicked.connect(lambda: self.buscar_registros("Professor"))
 
     def filtrar_tabela(self):
         texto_pesquisa = self.ui.search_input.text().strip().lower()
@@ -46,9 +48,12 @@ class telaPrincipal(QMainWindow):
         dialog = Student_form(atualizar_callback=self.buscar_registros)
         dialog.exec_()
 
-    def buscar_registros(self):
+    def buscar_registros(self, categoria =None):
         db = Data_base()
-        resultado = db.select_all_entidades()
+        if categoria:
+         resultado = db.select_entidades_por_categoria(categoria)
+        else:
+         resultado = db.select_all_entidades()
         
         delegate = ElidedItemDelegate(self.ui.tableWidget_2)
         self.ui.tableWidget_2.setItemDelegateForColumn(2, delegate)

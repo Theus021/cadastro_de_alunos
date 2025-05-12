@@ -169,6 +169,20 @@ class Data_base:
             print(f"Erro ao buscar dados: {e}")
             return "Erro ao buscar dados no banco"
 
+    def select_entidades_por_categoria(self, categoria):
+      try:
+        self.connect()
+        cursor = self.connection.cursor()
+        querry = "SELECT id, nome, email, cpf, periodo, turma FROM entidades WHERE isAtivo = 1 AND categoria = %s" 
+        cursor.execute(querry, (categoria,))
+
+        resultado = cursor.fetchall()
+        return resultado
+
+      except Exception as e:
+        print("Erro ao buscar entidades por categoria:", e)
+        return []
+
     def buscar_entidade_por_id(self, entidade_id):
         self.connect()
         cursor = self.connection.cursor()
