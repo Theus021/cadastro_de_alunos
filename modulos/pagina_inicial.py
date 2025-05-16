@@ -1,7 +1,7 @@
 from operator import itemgetter
 from tkinter.dialog import Dialog
 from unittest import result
-from PySide6.QtWidgets import QMainWindow, QApplication, QHBoxLayout, QPushButton, QWidget, QDialog, QMessageBox
+from PySide6.QtWidgets import QMainWindow, QApplication, QHBoxLayout, QPushButton, QWidget, QDialog, QMessageBox, QButtonGroup
 from PySide6.QtPrintSupport import *
 from PySide6.QtWidgets import QTableWidgetItem
 import sys
@@ -24,9 +24,55 @@ class telaPrincipal(QMainWindow):
         self.ui.adicionar_button.clicked.connect(self.open_cadastrar_aluno)
         self.buscar_registros()
         self.ui.search_input.textChanged.connect(self.filtrar_tabela)
+        self.ui.todos_Tg.clicked.connect(lambda: self.buscar_registros())
         self.ui.alunos_tg.clicked.connect(lambda: self.buscar_registros("Aluno"))
         self.ui.professores_tg.clicked.connect(lambda: self.buscar_registros("Professor"))
+        self.ui.inativos_tg.clicked.connect(lambda: self.buscar_registros("isAtivo"))
 
+        self.filtro_botoes = {
+        self.ui.todos_Tg: self.ui.todos_div_tg,
+        self.ui.alunos_tg: self.ui.alunos_div_tg,
+        self.ui.professores_tg: self.ui.prof_div_tg,
+        self.ui.inativos_tg: self.ui.inativos_div_tg
+    }
+
+        self.btn_group = QButtonGroup(self)
+        self.btn_group.setExclusive(True)
+
+        for button in self.filtro_botoes:
+            button.setCheckable(True)
+            self.btn_group.addButton(button)
+
+        self.btn_group.buttonClicked.connect(self.altera_cor_botoes)
+
+        self.ui.todos_Tg.setChecked(True)
+        self.altera_cor_botoes(self.ui.todos_Tg)
+
+
+    def altera_cor_botoes(self, botao_clicado):
+        for botao, label in self.filtro_botoes.items():
+            if botao == botao_clicado:
+                botao.setStyleSheet("color: #0265CB; font-weight: bold; border: none;")
+                label.setStyleSheet("""
+                    background-color: #0265CB;
+                    border-radius: 4px;
+                    min-width: 90px;
+                    min-height: 2px;
+                """)
+            else:
+                botao.setStyleSheet("color: #B1B2B3; font-weight: bold; border: none;")
+                label.setStyleSheet("""
+                    background-color: #CCC;
+                    border-radius: 4px;
+                    min-width: 90px;
+                    min-height: 2px;
+                """)
+    
+        if botao_clicado == self.ui.inativos_tg:
+            self.buscar_registros(ativo=0)
+        elif botao_clicado == self.ui.todos_Tg:
+            self.buscar_registros()
+       
     def filtrar_tabela(self):
         texto_pesquisa = self.ui.search_input.text().strip().lower()
 
@@ -48,13 +94,16 @@ class telaPrincipal(QMainWindow):
         dialog = Student_form(atualizar_callback=self.buscar_registros)
         dialog.exec_()
 
-    def buscar_registros(self, categoria =None):
+    def buscar_registros(self, categoria=None, ativo=1):
         db = Data_base()
+
         if categoria:
-         resultado = db.select_entidades_por_categoria(categoria)
+            resultado = db.select_entidades_por_categoria(categoria)
+        elif ativo == 0:
+            resultado = db.select_entidades_inativas()
         else:
-         resultado = db.select_all_entidades()
-        
+            resultado = db.select_all_entidades()
+
         delegate = ElidedItemDelegate(self.ui.tableWidget_2)
         self.ui.tableWidget_2.setItemDelegateForColumn(2, delegate)
 
@@ -69,18 +118,16 @@ class telaPrincipal(QMainWindow):
         self.ui.tableWidget_2.setRowCount(len(resultado))
 
         for row_index, row_data in enumerate(resultado):
-            for col_index, cell_data  in enumerate(row_data):
-                
+            for col_index, cell_data in enumerate(row_data):
                 item = QTableWidgetItem(str(cell_data))
                 item.setTextAlignment(Qt.AlignLeft | Qt.AlignCenter)
                 self.ui.tableWidget_2.setItem(row_index, col_index, item)
 
-            aluno_id = row_data[0] 
-
+            aluno_id = row_data[0]
             botoes = botoesDeAcao(self, aluno_id)
             self.ui.tableWidget_2.setCellWidget(row_index, 6, botoes)
-            
-        db.close_connection() 
+
+        db.close_connection()
 
     def editarRegistros(self, aluno_id): 
         db = Data_base()

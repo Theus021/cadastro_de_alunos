@@ -183,6 +183,34 @@ class Data_base:
         print("Erro ao buscar entidades por categoria:", e)
         return []
 
+    def select_entidades_inativas(self):
+        try:
+            self.connect()
+            cursor = self.connection.cursor()
+            querry = "SELECT id, nome, email, cpf, periodo, turma FROM entidades WHERE isAtivo = 0"
+            cursor.execute(querry)
+
+            resultado = cursor.fetchall()
+            return resultado
+
+        except Exception as e:
+            print("Erro ao buscar entidades inativas:", e)
+            return []
+
+  
+        try:
+            self.connect()
+            cursor = self.connection.cursor()
+            querry = "SELECT id, nome, email, cpf, periodo, turma FROM entidades WHERE isAtivo = %s AND categoria = %s"
+            cursor.execute(querry, (isAtivo, categoria))
+
+            resultado = cursor.fetchall()
+            return resultado
+
+        except Exception as e:
+            print("Erro ao buscar entidades por categoria e status:", e)
+            return []
+
     def buscar_entidade_por_id(self, entidade_id):
         self.connect()
         cursor = self.connection.cursor()
